@@ -1,0 +1,195 @@
+{
+    "position": "top",
+    "layer": "top",
+    "height": 16,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/playerctl", "custom/playerlabel"],
+    "modules-center": ["cpu", "memory", "disk", "custom/powerbutton"],
+    "modules-right": [/*"tray",*/ "custom/randwall", "network", "backlight", "pulseaudio", "battery", "clock", "custom/launcher2"],
+    // Modules configuration
+	"clock": {
+		"format": "   {:%H:%M}",
+		"tooltip": "true",
+        	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        	"format-alt": "   {:%d/%m}"
+	},
+
+
+  "custom/powerbutton": {
+    "format": "",
+    "on-click": "sh -c '(wlogout --protocol layer-shell & disown)'",
+    "on-click-right": "sh -c swaylock & disown"
+  },
+	
+
+	"hyprland/workspaces": {
+        "active-only": false,
+        "all-outputs": true,
+        "disable-scroll": false,
+        "on-scroll-up": "hyprctl dispatch workspace -1",
+        "on-scroll-down": "hyprctl dispatch workspace +1",
+		"format": "{icon}",
+		"on-click": "activate",
+		"format-icons": {
+//			"1": "一",
+//			"2": "二",
+//			"3": "三",
+//			"4": "四",
+//			"5": "五",
+			"urgent": "",
+			"active": "",
+			"default": "󰧞",
+    "sort-by-number": true
+    },
+    },
+
+    "custom/playerctl": {
+      "format": "{icon}",
+      "return-type": "json",
+      "max-length": 64,
+      "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+      "on-click-middle": "playerctl play-pause",
+      "on-click": "playerctl previous",
+      "on-click-right": "playerctl next",
+      "format-icons": {
+        "Playing": "<span foreground='#E5B9C6'>󰒮 󰐌 󰒭</span>",
+        "Paused": "<span foreground='#928374'>󰒮 󰏥 󰒭</span>"
+      },
+    },
+
+    "custom/playerlabel": {
+      "format": "<span>{}</span>",
+      "return-type": "json",
+      "max-length": 48,
+      "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+      "on-click-middle": "playerctl play-pause",
+      "on-click": "playerctl previous",
+      "on-click-right": "playerctl next",
+      "format-icons": {
+        "Playing": "<span foreground='#E5B9C6'>󰒮 󰐌 󰒭</span>",
+        "Paused": "<span foreground='#928374'>󰒮 󰏥 󰒭</span>"
+      },
+    },
+
+
+  "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    },
+
+  "memory": {
+    "format": "󰍛  {}%",
+    "format-alt": "󰍛  {used}/{total} GiB",
+    "interval": 5,
+    "on-click-right": "kitty htop"
+  },
+
+  "cpu": {
+    "format": "󰻠  {usage}%",
+    "format-alt": "󰻠  {avg_frequency} GHz",
+    "interval": 5,
+    "on-click-right": "kitty htop"
+  },
+
+  "disk": {
+    "format": "󰋊  {}%",
+    "format-alt": "󰋊  {used}/{total} GiB",
+    "interval": 5,
+    "path": "/",
+    "on-click-right": "kitty htop"
+  },
+	
+	"network": {
+          "format-wifi": "󰤨",
+        	"format-ethernet": "󰈀 {ifname}: Aesthetic",
+        	"format-linked": " {ifname} (No IP)",
+        	"format-disconnected": "󰤭",
+        	"format-alt": " {ifname}: {ipaddr}/{cidr}",
+          "tooltip-format": "{essid}",
+          "on-click-right": "nm-connection-editor",
+          "on-click-middle": "iwgtk"
+	},
+
+	"tray": {
+		"icon-size": 16,
+		"spacing": 5
+	},
+
+	"backlight": {
+  "device": "intel_backlight",
+	"format": "{icon}  {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+	"on-scroll-up": "brightnessctl set 1%-",
+	"on-scroll-down": "brightnessctl set 1%+",
+	},
+
+  "pulseaudio": {
+    "format": "{icon}   {volume}%",
+    "format-muted": "",
+    "on-click": "pamixer -t",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "pamixer -d 1",
+    "on-scroll-down": "pamixer -i 1",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
+    }
+  },
+
+
+  "custom/randwall": {
+    "format": "󰏘",
+    "on-click": "swww img `find ~/.wallpapers -type f | shuf -n 1`",
+    "on-click-right": "swww img ~/.wallpapers/mazda.jpg",
+    "on-click-middle": "hyprpicker"
+  },
+  "custom/launcher": {
+    "format": "",
+    "on-click": "rofi -show drun",
+//    "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
+    "on-click-right": "rofi -show run"
+//    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"  
+  },
+  "custom/launcher2": {
+    "format": "󰈸",
+    "on-click": "kitty",
+//    "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
+    "on-click-right": "spotify-launcher",
+//    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"  
+    "on-click-middle": "killall waybar; waybar & disown"
+  },
+
+  "custom/wf-recorder": {
+		"format": "{}",
+		"interval": "once",
+		"exec": "echo ''",
+		"tooltip": "false",
+		"exec-if": "pgrep 'wf-recorder'",
+		"on-click": "exec ./scripts/wlrecord.sh",
+		"signal": 8
+	},
+
+  "custom/hyprpicker": {
+    "format": "󰈋",
+    "on-click": "hyprpicker -a -f hex",
+    "on-click-right": "hyprpicker -a -f rgb"
+  },
+  }
+}
