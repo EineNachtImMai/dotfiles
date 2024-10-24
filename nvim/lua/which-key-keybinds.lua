@@ -68,5 +68,5 @@ return {
   {"<leader>p", "<cmd>Lazy<cr>", desc = "Plugins"},
   {"<leader>m", "<cmd>Mason<cr>", desc = "Mason"},
 
-  {"<leader>w", ":w !sudo tee % <cr>", desc = "Sudo Write because you're a dumbass who forgot to sudo nvim"}
+  {"<leader>w","<cmd>SudaWrite<cr>", desc = "Sudo Write because you're a dumbass who forgot to sudo nvim"}
 }

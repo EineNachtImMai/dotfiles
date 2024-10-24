@@ -132,4 +132,6 @@ return {
     end
   },
   {"ahmedkhalf/project.nvim"},
+  {"BurntSushi/ripgrep"},
+  {"lambdalisue/vim-suda"},
 }
