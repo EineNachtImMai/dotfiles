@@ -134,4 +134,7 @@ return {
   {"ahmedkhalf/project.nvim"},
   {"BurntSushi/ripgrep"},
   {"lambdalisue/vim-suda"},
+  {"ThePrimeagen/vim-be-good"},
+  {"christoomey/vim-tmux-navigator", lazy=false},
+  {"kmonad/kmonad-vim"},
 }

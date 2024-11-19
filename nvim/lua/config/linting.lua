@@ -4,7 +4,8 @@ lint.linters_by_lt = {
   python = {"ruff"},
   rust = {"bacon"},
   javascript = {"quick-lint-js"},
-  go = {"golangci-lint"}
+  go = {"golangci-lint"},
+  yaml = {"yamlint"},
 }
 
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
