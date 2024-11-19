@@ -43,7 +43,7 @@
 			"active": "",
 			"default": "󰧞",
     "sort-by-number": true
-    },
+    }
     },
 
     "custom/playerctl": {
@@ -57,7 +57,7 @@
       "format-icons": {
         "Playing": "<span foreground='#E5B9C6'>󰒮 󰐌 󰒭</span>",
         "Paused": "<span foreground='#928374'>󰒮 󰏥 󰒭</span>"
-      },
+      }
     },
 
     "custom/playerlabel": {
@@ -71,7 +71,7 @@
       "format-icons": {
         "Playing": "<span foreground='#E5B9C6'>󰒮 󰐌 󰒭</span>",
         "Paused": "<span foreground='#928374'>󰒮 󰏥 󰒭</span>"
-      },
+      }
     },
 
 
@@ -132,6 +132,8 @@
         "format-icons": ["", "", "", "", "", "", "", "", ""],
 	"on-scroll-up": "brightnessctl set 1%-",
 	"on-scroll-down": "brightnessctl set 1%+",
+  "on-click": "brightnessctl set 40%",
+  "on-click-right": "brightnessctl set 100%"
 	},
 
   "pulseaudio": {
@@ -156,9 +158,9 @@
 
   "custom/randwall": {
     "format": "󰏘",
-    "on-click": "swww img `find ~/.wallpapers -type f | shuf -n 1`",
-    "on-click-right": "swww img ~/.wallpapers/mazda.jpg",
-    "on-click-middle": "hyprpicker"
+    "on-click": "~/.config/hypr/scripts/rand_wallpaper.py",
+    "on-click-right": "hyprctl hyprpaper wallpaper ~/.wallpapers/cat.jpg",
+    "on-click-middle": "hyprctl hyprpaper wallpaper ~/.wallpapers/mazda.png"
   },
   "custom/launcher": {
     "format": "",
@@ -190,6 +192,6 @@
     "format": "󰈋",
     "on-click": "hyprpicker -a -f hex",
     "on-click-right": "hyprpicker -a -f rgb"
-  },
+  }
   }
 }
