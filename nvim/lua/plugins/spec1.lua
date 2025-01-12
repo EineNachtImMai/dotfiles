@@ -1,309 +1,280 @@
--- TODO: clean things up
 return {
-  -- Which-key Extension
-  {
-  "folke/which-key.nvim",
-  event = "VeryLazy",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-    keys = {
-      {
-        "<leader>?",
-        function()
-          require("which-key").show({ global = false })
-        end,
-        desc = "Buffer Local Keymaps (which-key)",
-      },
-    },
-  },
-  {
-    "lunarvim/lunar.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme lunar]])
-    end,
-  },
-  {
-    'akinsho/bufferline.nvim',
-    dependencies = 'nvim-tree/nvim-web-devicons'
-  },
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
-  },
-  {
-    "phaazon/hop.nvim",
-    lazy = true,
-  },
-  {
-    'nvim-tree/nvim-tree.lua',
-    lazy = true,
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-  },
-  {
-    'nvim-telescope/telescope.nvim',
-    lazy = true,
-    dependencies = {
-      {'nvim-lua/plenary.nvim'},
-    }
-  },
-  {
-    "goolord/alpha-nvim",
-    lazy = true,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-  },
-  --[[ {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
-        dependencies = {
-            -- LSP Support
-            {'neovim/nvim-lspconfig'},             -- Required
-            {'williamboman/mason.nvim'},           -- Optional
-            {'williamboman/mason-lspconfig.nvim'}, -- Optional
+  -- NOTE:  keyboard shortcuts using space + key, shows uses and possible following keys.
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
+			},
+		},
+	},
 
-            -- Autocompletion
-            {'hrsh7th/nvim-cmp'},         -- Required
-            {'hrsh7th/cmp-nvim-lsp'},     -- Required
-            {'hrsh7th/cmp-buffer'},       -- Optional
-            {'hrsh7th/cmp-path'},         -- Optional
-            {'saadparwaiz1/cmp_luasnip'}, -- Optional
-            {'hrsh7th/cmp-nvim-lua'},     -- Optional
+  -- NOTE: lunarvim color scheme based on TokyoNight, my personal fav scheme.
+	{
+		"lunarvim/lunar.nvim",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			-- load the colorscheme here
+			vim.cmd([[colorscheme lunar]])
+		end,
+	},
 
-            -- Snippets
-            {'L3MON4D3/LuaSnip'},             -- Required
-            {'rafamadriz/friendly-snippets'}, -- Optional
-        }
-    }, ]]
-  {
-    "folke/lazydev.nvim",
-    ft = "lua", -- only load on lua files
-    opts = {
-      library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
-        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      },
-    },
-  },
-  {
-    "hrsh7th/nvim-cmp",
-    opts = function(_, opts)
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, {
-        name = "lazydev",
-        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-      })
-    end,
-  },
-  {"hrsh7th/cmp-nvim-lsp"},
-  {'hrsh7th/cmp-buffer'},       -- Optional
-  {'hrsh7th/cmp-path'},         -- Optional
-  {'saadparwaiz1/cmp_luasnip'}, -- Optional
-  {'hrsh7th/cmp-nvim-lua'},     -- Optional
-  { 'hrsh7th/cmp-cmdline' },
+  -- NOTE: tabs in neovim for the different open buffers.
+	{
+		"akinsho/bufferline.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+	},
 
-  -- Snippets
+  -- NOTE: status line at the bottom of the screen.
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+
+  -- NOTE: file browser tab for neovim.
+	{
+		"nvim-tree/nvim-tree.lua",
+		lazy = true,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
+
+  -- NOTE: fuzzy finder for neovim. Crazy powerful, and has integrations for a lot of plugins.
+	{
+		"nvim-telescope/telescope.nvim",
+		lazy = true,
+		dependencies = {
+			{ "nvim-lua/plenary.nvim" },
+		},
+	},
+
+  -- NOTE: dashboard for nvim.
+	{
+		"goolord/alpha-nvim",
+		lazy = true,
+	},
+
+  -- NOTE: syntax highlighting using tree-sitter.
+	{
+		"nvim-treesitter/nvim-treesitter",
+	},
+
+  -- NOTE: autocompletion from snippets.
+	{
+		"hrsh7th/nvim-cmp",
+		opts = function(_, opts)
+			opts.sources = opts.sources or {}
+			table.insert(opts.sources, {
+				name = "lazydev",
+				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+			})
+		end,
+	},
+
+	-- NOTE: Snippets
+	{
+		"L3MON4D3/LuaSnip",
+		dependencies = { "rafamadriz/friendly-snippets" },
+	}, -- Required
+	{ "rafamadriz/friendly-snippets" },
+
+  -- NOTE: nvim-cmp source for neovim's built-in language server client.
+	{ "hrsh7th/cmp-nvim-lsp" },
+
+  -- NOTE: allows nvim-cmp to use the buffer (aka take into account what you already typed to suggest it again)
+	{ "hrsh7th/cmp-buffer" },
+
+  -- NOTE: allows nvim-cmp to help with suggesting paths.
+	{ "hrsh7th/cmp-path" },
+
+  -- NOTE: luasnip completion source for nvim-cmp.
+	{ "saadparwaiz1/cmp_luasnip" },
+
+  -- NOTE: nvim-cmp source for neovim Lua API.
+	{ "hrsh7th/cmp-nvim-lua" },
+
+  -- NOTE: allows nvim-cmp to autocomplete your nvim commands too.
+	{ "hrsh7th/cmp-cmdline" },
+
+  -- NOTE: sane defaults for the nvim lsp.
+	{
+		"neovim/nvim-lspconfig",
+	},
+
+  -- NOTE: configures LuaLS to recognize vim config variables.
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+			},
+		},
+	},
+
+  -- NOTE: terminal integration into neovim.
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		config = true,
+	},
+
+  -- NOTE: automatically inserts the corresponding closing character ( e.g. ")" when typing "(" ). Can do other great stuff, but for now I only use it for that.
+	{
+		"windwp/nvim-autopairs",
+	},
+
+  -- NOTE: Never lose your work because of a stupid undo + write again. saves your undo's as a tree so you can freely browse and access them.
+	{
+		"jiaoshijie/undotree",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
+
+  -- NOTE: multiple cursor in nvim.
+	{
+		"mg979/vim-visual-multi",
+		branch = "master",
+	},
+
+  -- NOTE: Nicer UI for notifications, commands, password input, ...
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
+
+  -- NOTE: Really useful plugin, automatically comments one or multiple lines, using the correct characters depending on the language.
+	{ "numToStr/Comment.nvim" },
+
+  -- NOTE: Nicer linting, with the possibility of only displaying the message when you're on the error's line.
+	{
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy", -- Or `LspAttach`
+	},
+
+  -- NOTE: Project management in nvim: detects project directories (for example containing a .git file). Integrates very well with Telescope.
+	{ "ahmedkhalf/project.nvim" },
+
+  -- NOTE: Recursively search a directory for a regex.
+	{ "BurntSushi/ripgrep" },
+
+  -- NOTE: Forgot to use sudo for a file for which you don't have write permissions? Suda allows you to type in your sudo password and edit it anyway.
+	{ "lambdalisue/vim-suda" },
+
+  -- NOTE: good little plugin for practicing basic navigation.
+	{ "ThePrimeagen/vim-be-good" },
+
+  -- NOTE: Helps integrate nvim into tmux.
+	{ "christoomey/vim-tmux-navigator", lazy = false },
+
+  -- NOTE: Vim syntax highlighting for .kbd files. I use kanata for a few remaps, so this comes handy every so often.
+	{ "kmonad/kmonad-vim" },
+
+  -- NOTE: awesome plugin for editing and writing markdown. Renders it right into the editor, great for visualizing it better.
+	{
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
+		opts = {},
+	},
+
+  -- NOTE: I'm using it right now while writing this. Create and browse different comment tage: todo, note, hack... and highlights it accordingly.
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
+
+  -- NOTE: Create and edit obsidian notes in neovim. I love nvim, but markdown is much more readable in obsidian, and some things like pdf annotations
+  -- just aren't possible without it.
+	{
+		"epwalsh/obsidian.nvim",
+		version = "*", -- recommended, use latest release instead of latest commit
+		lazy = true,
+		ft = "markdown",
+		dependencies = {
+			-- Required.
+			"nvim-lua/plenary.nvim",
+		},
+		opts = {
+			workspaces = {
+				{
+					name = "cours",
+					path = "~/Documents/cours",
+				},
+			},
+		},
+	},
+
+  -- NOTE: Leetcode challenges built right into neovim, meaning you can use the editor you're actually used to, without all the tedious copy-pasting for tests
+  -- and submitting
+	{
+		"kawre/leetcode.nvim",
+		build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+		opts = {
+		},
+	},
+
+  -- NOTE: Forces you to use nvim more efficiently if possible (disables arrow keys, suggests shorter versions for some motions)
+	{
+		"m4xshen/hardtime.nvim",
+		dependencies = { "MunifTanjim/nui.nvim" },
+		opts = {
+			disabled_keys = {
+        -- enable arrow keys in insert mode so you can still move around.
+				["<Left>"] = { "n", "v" },
+				["<Right>"] = { "n", "v" },
+				["<Up>"] = { "n", "v" },
+				["<Down>"] = { "n", "v" },
+			},
+			restricted_keys = {
+        -- disable the limit for successive direction key presses, cause sometimes i just don't know how low i wanna go.
+				["h"] = {},
+				["j"] = {},
+				["k"] = {},
+				["l"] = {},
+			},
+		},
+	},
+
+  -- NOTE: Really useful plugin. Wanna enclose a word or selection with parentheses, brackets, or anything else that requres closing ? Then you
+  -- need this plugin.
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
+
+  -- NOTE: Interface with code formatters so you can have a shortcut to run your favorite formatter.
   {
-    'L3MON4D3/LuaSnip',
-    dependencies = {"rafamadriz/friendly-snippets"},
-  },             -- Required
-  {'rafamadriz/friendly-snippets'}, -- Optional
-  {
-    "neovim/nvim-lspconfig",
-  },
-  {
-    'akinsho/toggleterm.nvim',
-    version = "*",
-    config = true
-  },
-  {
-    "windwp/nvim-autopairs"
-  },
-  {
-    "jiaoshijie/undotree",
-    dependencies  = {
-      "nvim-lua/plenary.nvim",
-    },
-  },
-  {
-    "mg979/vim-visual-multi",
-    branch="master"
-  },
-  {
-  "folke/noice.nvim",
-  event = "VeryLazy",
-  opts = {
-    -- add any options here
-  },
-  dependencies = {
-    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    "MunifTanjim/nui.nvim",
-    -- OPTIONAL:
-    --   `nvim-notify` is only needed, if you want to use the notification view.
-    --   If not available, we use `mini` as the fallback
-    "rcarriga/nvim-notify",
-    }
-  },
-  {'numToStr/Comment.nvim'},
-  --[[ {
-    "mfussenegger/nvim-lint",
-    event = {
-      "BufReadPre",
-      "BufNewFile"
-    },
-  }, ]]
-  {
-    "rachartier/tiny-inline-diagnostic.nvim",
-    event = "VeryLazy", -- Or `LspAttach`
-    config = function()
-        require('tiny-inline-diagnostic').setup()
-    end
-  },
-  {"ahmedkhalf/project.nvim"},
-  {"BurntSushi/ripgrep"},
-  {"lambdalisue/vim-suda"},
-  {"ThePrimeagen/vim-be-good"},
-  {"christoomey/vim-tmux-navigator", lazy=false},
-  {"kmonad/kmonad-vim"},
-  --[[ {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
+    'stevearc/conform.nvim',
     opts = {},
-  }, ]]
-  {
-      "OXY2DEV/markview.nvim",
-      lazy = false,      -- Recommended
-      -- ft = "markdown" -- If you decide to lazy-load anyway
-
-      dependencies = {
-          "nvim-treesitter/nvim-treesitter",
-          "nvim-tree/nvim-web-devicons"
-      }
-  },
-    --[[ {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        build = "cd app && npm install",
-        init = function()
-        vim.g.mkdp_filetypes = { "markdown" }
-        end,
-        ft = { "markdown" },
-    }, ]]
-    {
-        "folke/todo-comments.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
-        }
-    },
-{
-    "vhyrro/luarocks.nvim",
-    priority = 1001, -- this plugin needs to run before anything else
-    opts = {
-        rocks = { "magick" },
-    },
-},
---[[ {
-    "3rd/image.nvim",
-    build = false, -- do not build with hererocks
-    dependencies = {
-      "kiyoon/magick.nvim",
-    },
-}, ]]
-  {
-    "epwalsh/obsidian.nvim",
-    version = "*",  -- recommended, use latest release instead of latest commit
-    lazy = true,
-    ft = "markdown",
-    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-    -- event = {
-    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-    --   -- refer to `:h file-pattern` for more examples
-    --   "BufReadPre path/to/my-vault/*.md",
-    --   "BufNewFile path/to/my-vault/*.md",
-    -- },
-    dependencies = {
-      -- Required.
-      "nvim-lua/plenary.nvim",
-
-      -- see below for full list of optional dependencies 👇
-    },
-    opts = {
-      workspaces = {
-        {
-          name = "cours",
-          path = "~/Documents/cours",
-        },
-      },
-
-      -- see below for full list of options 👇
-    },
-  },
-
-  {
-      "kawre/leetcode.nvim",
-      build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
-      dependencies = {
-          "nvim-telescope/telescope.nvim",
-          -- "ibhagwan/fzf-lua",
-          "nvim-lua/plenary.nvim",
-          "MunifTanjim/nui.nvim",
-      },
-      opts = {
-          -- configuration goes here
-      },
-  },
-    {
-    "m4xshen/hardtime.nvim",
-    dependencies = { "MunifTanjim/nui.nvim" },
-    opts = {
-      disabled_keys = {
-        ["<Left>"] = {"n", "v"},
-        ["<Right>"] = {"n", "v"},
-        ["<Up>"] = {"n", "v"},
-        ["<Down>"] = {"n", "v"},
-      },
-      restricted_keys = {
-        ["h"] = {},
-        ["j"] = {},
-        ["k"] = {},
-        ["l"] = {},
-      }
-    }
-    },
-  --[[ {
-    'mrjones2014/legendary.nvim',
-    -- since legendary.nvim handles all your keymaps/commands,
-    -- its recommended to load legendary.nvim before other plugins
-    priority = 10000,
-    lazy = false,
-    -- sqlite is only needed if you want to use frecency sorting
-    -- dependencies = { 'kkharji/sqlite.lua' }
-  }, ]]
-  {
-    "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
-    event = "VeryLazy",
-    config = function()
-        require("nvim-surround").setup({
-            -- Configuration here, or leave empty to use defaults
-        })
-    end
   },
 }

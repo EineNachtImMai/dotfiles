@@ -1,10 +1,10 @@
 return {
-  { "<leader>f", group = "File Search" }, -- group
+  { "<leader>f", group = "File Search" },
   { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File", mode = "n" },
   { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Color scheme" },
   { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find text in all files" },
   { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Browse Projects" },
-  { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent Files"}, -- hide this keymap
+  { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent Files"},
 
   { "<leader>s", group = "Search"},
   { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Browse Find Help"},
@@ -15,8 +15,6 @@ return {
 
   {"<leader>;", "<cmd>Alpha<cr>", desc = "Dashboard"},
 
-  {"<leader>m", "<cmd>Mason<cr>", desc = "Mason (code completion) UI for LSP"},
-
   {"<leader>l", group = "LSP"},
   {"<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
   {"<leader>li", "<cmd>LspInfo<cr>", desc = "LSP Info" },
@@ -24,13 +22,13 @@ return {
   {"<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename File" },
   {"<leader>la", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
   {"<leader>la", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols" },
+  {"<leader>lf", "<cmd>Format<cr>", desc = "Format using conform.nvim"},
 
   { "<leader>w", proxy = "<c-w>", group = "Windows" }, -- proxy to window mappings
 
   { "<leader>t", group = "ToggleTerm" }, -- proxy to window mappings
   {"<leader>tn", "<cmd>lua _NODE_TOGGLE()<cr>", desc = "Toggle NodeJS Terminal"},
   {"<leader>tp", "<cmd>lua _PYTHON_TOGGLE()<cr>", desc = "Toggle Python Terminal"},
-  -- {"<leader>tn", "<cmd>lua _NODE_TOGGLE()<cr>", desc = "Toggle NodeJS Terminal"},
 
   {"<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Toggle Horizontal Terminal"},
   {"<leader>tv", "<cmd>ToggleTerm size=50 direction=vertical<cr>", desc = "Toggle Vertical Terminal"},
@@ -50,7 +48,7 @@ return {
   },
   {
     mode = {"v"},
-    { "<leader>/", function() 
+    { "<leader>/", function()
       local esc = vim.api.nvim_replace_termcodes(
         '<ESC>', true, false, true
       )
@@ -59,6 +57,7 @@ return {
       require("Comment.api").toggle.blockwise(vim.fn.visualmode()) -- call the blockwise comment toggle function, passing as argument the last visual mode buffer
     end,
     desc = "Comment Selection" }, -- Esoteric shit to make the blockwise comments not fucked up
+    -- NOTE: Won't work if the language doesn't support blockwise comments (e.g. Python). I'll figure it out eventually.
   },
 
   {"<leader><Left>", function() vim.cmd("bprev") end, desc = "Previous Buffer"},
@@ -67,11 +66,9 @@ return {
   {"<leader>|", "<cmd>vsplit<cr>", desc = "Vertical Split"},
   {"<leader>-", "<cmd>split<cr>", desc = "Horizontal Split"},
 
-  -- {"<leader>o", "<cmd>on<cr>", desc = "Close All Windows Except Current"},
   {"<leader>p", "<cmd>Lazy<cr>", desc = "Plugins"},
-  {"<leader>m", "<cmd>Mason<cr>", desc = "Mason"},
 
   {"<leader>w","<cmd>SudaWrite<cr>", desc = "Sudo Write because you're a dumbass who forgot to sudo nvim"},
-  
-  {"<leader>H", "<cmd>Hardtime toggle<cr>", desc = "Toggle hardtime.nvim"}
+
+  {"<leader>H", "<cmd>Hardtime toggle<cr>", desc = "Toggle hardtime.nvim"},
 }

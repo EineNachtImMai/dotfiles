@@ -1,4 +1,4 @@
-{
+return {
   -- A list of workspace names, paths, and configuration overrides.
   -- If you use the Obsidian app, the 'path' of a workspace should generally be
   -- your vault root (where the `.obsidian` folder is located).
@@ -11,10 +11,6 @@
       path = "~/Documents/cours/",
     },
   },
-
-  -- Alternatively - and for backwards compatibility - you can set 'dir' to a single path instead of
-  -- 'workspaces'. For example:
-  -- dir = "~/vaults/work",
 
   -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
   completion = {
