@@ -4,7 +4,7 @@ return {
   { "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Color scheme" },
   { "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find text in all files" },
   { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Browse Projects" },
-  { "<leader>fr", "<cmd>Telescope old_files<cr>", desc = "Open Recent Files"}, -- hide this keymap
+  { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent Files"}, -- hide this keymap
 
   { "<leader>s", group = "Search"},
   { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Browse Find Help"},
@@ -33,12 +33,15 @@ return {
   -- {"<leader>tn", "<cmd>lua _NODE_TOGGLE()<cr>", desc = "Toggle NodeJS Terminal"},
 
   {"<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Toggle Horizontal Terminal"},
-  {"<leader>tv", "<cmd>ToggleTerm size=30 direction=vertical<cr>", desc = "Toggle Vertical Terminal"},
+  {"<leader>tv", "<cmd>ToggleTerm size=50 direction=vertical<cr>", desc = "Toggle Vertical Terminal"},
 
   {"<leader><Tab>", "<cmd>lua require('undotree').toggle()<cr>", desc = "Toggle UndoTree"},
 
   { "<leader>b", group = "Buffers"},
   { "<leader>bk", "<cmd>bdelete<cr>", desc = "Kill Current Buffer"},
+
+  {"<leader>o", group = "Obsidian"},
+  {"<leader>op", "<cmd>ObsidianPasteImg<cr>", desc = "Paste Image from clipboard"},
 
   {"<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Explorer"},
   {
@@ -64,9 +67,11 @@ return {
   {"<leader>|", "<cmd>vsplit<cr>", desc = "Vertical Split"},
   {"<leader>-", "<cmd>split<cr>", desc = "Horizontal Split"},
 
-  {"<leader>o", "<cmd>on<cr>", desc = "Close All Windows Except Current"},
+  -- {"<leader>o", "<cmd>on<cr>", desc = "Close All Windows Except Current"},
   {"<leader>p", "<cmd>Lazy<cr>", desc = "Plugins"},
   {"<leader>m", "<cmd>Mason<cr>", desc = "Mason"},
 
-  {"<leader>w","<cmd>SudaWrite<cr>", desc = "Sudo Write because you're a dumbass who forgot to sudo nvim"}
+  {"<leader>w","<cmd>SudaWrite<cr>", desc = "Sudo Write because you're a dumbass who forgot to sudo nvim"},
+  
+  {"<leader>H", "<cmd>Hardtime toggle<cr>", desc = "Toggle hardtime.nvim"}
 }

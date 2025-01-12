@@ -1,17 +1,24 @@
--- Learn the keybindings, see :help lsp-zero-keybindings
--- Learn to configure LSP servers, see :help lsp-zero-api-showcase
-local lsp = require('lsp-zero')
-lsp.preset('lsp-compe')
+local lsp = require("lspconfig")
 
-lsp.setup()
-
-vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
-
-local cmp = require('cmp')
-local cmp_config = lsp.defaults.cmp_config({
-  window = {
-    completion = cmp.config.window.bordered()
-  }
+lsp.nixd.setup({
+  cmd = { "nixd" },
+  settings = {
+    nixd = {
+      nixpkgs = {
+        expr = "import <nixpkgs> { }",
+      },
+      formatting = {
+        command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
+      },
+    },
+  },
 })
 
-cmp.setup(cmp_config)
+lsp.lua_ls.setup {}
+
+lsp.rust_analyzer.setup {}
+
+lsp.gopls.setup {}
+
+-- TODO: For some reason, the LSP is running but doesn't do anything. I'll have to figure it out.
+-- lsp.ts_ls.setup {}
