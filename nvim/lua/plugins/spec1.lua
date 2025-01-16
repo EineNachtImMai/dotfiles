@@ -331,4 +331,6 @@ return {
       require("gitsigns").setup()
     end
   },
+
+  -- TODO: Someday, maybe, find a good image viewing plugin that works in NixOS...
 }

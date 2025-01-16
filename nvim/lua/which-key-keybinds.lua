@@ -72,4 +72,8 @@ return {
   {"<leader>w","<cmd>SudaWrite<cr>", desc = "Sudo Write because you're a dumbass who forgot to sudo nvim"},
 
   {"<leader>H", "<cmd>Hardtime toggle<cr>", desc = "Toggle hardtime.nvim"},
+
+  {"<leader>g", group = "Git"},
+  {"<leader>gl","<cmd>LazyGit<cr>", desc = "Open LazyGit (great git TUI)"},
+  {"<leader>gs", "<cmd>Gitsigns toggle_signs<cr>", desc = "Toggle git signs"},
 }
