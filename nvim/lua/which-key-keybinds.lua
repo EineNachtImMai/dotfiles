@@ -12,6 +12,7 @@ return {
   { "<leader>sr", "<cmd>Telescope registers<cr>", desc = "Browse Registers"},
   { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Browse Keymaps"},
   { "<leader>sc", "<cmd>Telescope commands<cr>", desc = "Browse Commands"},
+  { "<leader>sp", "<cmd>Telescope neoclip<cr>", desc = "Browse Registers for pasting"},
 
   {"<leader>;", "<cmd>Alpha<cr>", desc = "Dashboard"},
 
