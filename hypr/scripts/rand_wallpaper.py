@@ -2,6 +2,7 @@
 import os
 import random
 
+# TODO: remove the current wallpaper as a possibility.
 potential_wallpapers = os.listdir("/home/blackstar/.wallpapers/")
 wpp = potential_wallpapers[random.randint(0, len(potential_wallpapers) - 1)]
 os.system(f"hyprctl hyprpaper wallpaper 'eDP-1,/home/blackstar/.wallpapers/{wpp}'")
