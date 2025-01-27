@@ -27,13 +27,6 @@ return {
 
   { "<leader>w", proxy = "<c-w>", group = "Windows" }, -- proxy to window mappings
 
-  { "<leader>t", group = "ToggleTerm" }, -- proxy to window mappings
-  {"<leader>tn", "<cmd>lua _NODE_TOGGLE()<cr>", desc = "Toggle NodeJS Terminal"},
-  {"<leader>tp", "<cmd>lua _PYTHON_TOGGLE()<cr>", desc = "Toggle Python Terminal"},
-
-  {"<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Toggle Horizontal Terminal"},
-  {"<leader>tv", "<cmd>ToggleTerm size=50 direction=vertical<cr>", desc = "Toggle Vertical Terminal"},
-
   {"<leader><Tab>", "<cmd>lua require('undotree').toggle()<cr>", desc = "Toggle UndoTree"},
 
   { "<leader>b", group = "Buffers"},
@@ -42,7 +35,9 @@ return {
   {"<leader>o", group = "Obsidian"},
   {"<leader>op", "<cmd>ObsidianPasteImg<cr>", desc = "Paste Image from clipboard"},
 
-  {"<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Explorer"},
+  {"<leader>e", "<cmd>Oil<cr>", desc = "Oil File Explorer"},
+  {"<leader>E", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree  Explorer (deprecated)"},
+
   {
     mode = { "n" },
     { "<leader>/", require("Comment.api").toggle.linewise.current, desc = "Comment Line" }, -- the easier one: normal mode, linewise comment

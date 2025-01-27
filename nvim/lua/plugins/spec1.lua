@@ -122,13 +122,6 @@ return {
 		},
 	},
 
-	-- NOTE: terminal integration into neovim.
-	{
-		"akinsho/toggleterm.nvim",
-		version = "*",
-		config = true,
-	},
-
 	-- NOTE: automatically inserts the corresponding closing character ( e.g. ")" when typing "(" ). Can do other great stuff, but for now I only use it for that.
 	{
 		"windwp/nvim-autopairs",
@@ -333,4 +326,25 @@ return {
   },
 
   -- TODO: Someday, maybe, find a good image viewing plugin that works in NixOS...
+
+  {"norcalli/nvim-colorizer.lua"},
+
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+  },
+
+  {
+      "nvzone/typr",
+      dependencies = "nvzone/volt",
+      opts = {},
+      cmd = { "Typr", "TyprStats" },
+  },
 }
