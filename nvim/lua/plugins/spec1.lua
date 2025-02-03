@@ -38,15 +38,6 @@ return {
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
-	-- NOTE: file browser tab for neovim.
-	{
-		"nvim-tree/nvim-tree.lua",
-		lazy = true,
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
-
 	-- NOTE: fuzzy finder for neovim. Crazy powerful, and has integrations for a lot of plugins.
 	{
 		"nvim-telescope/telescope.nvim",
@@ -180,12 +171,17 @@ return {
 	{ "kmonad/kmonad-vim" },
 
 	-- NOTE: awesome plugin for editing and writing markdown. Renders it right into the editor, great for visualizing it better.
-	{
+	--[[ {
 		"MeanderingProgrammer/render-markdown.nvim",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
 		opts = {},
+	}, ]]
+
+	{
+		"OXY2DEV/markview.nvim",
+		lazy = false,
 	},
 
 	-- NOTE: I'm using it right now while writing this. Create and browse different comment tage: todo, note, hack... and highlights it accordingly.
@@ -302,49 +298,53 @@ return {
 			show_icons = true,
 			leader_key = ";", -- Recommended to be a single key
 			buffer_leader_key = "m", -- Per Buffer Mappings
-			global_bookmarks = true, -- Allow the bookmarks to not be project-dependent
+			-- global_bookmarks = true, -- Allow the bookmarks to not be project-dependent
 		},
 	},
 
-  -- NOTE: great clipboard manager for neovim
+	-- NOTE: great clipboard manager for neovim
 	{
 		"AckslD/nvim-neoclip.lua",
 		dependencies = {
-			{'nvim-telescope/telescope.nvim'},
+			{ "nvim-telescope/telescope.nvim" },
 		},
 		config = function()
 			require("neoclip").setup()
 		end,
 	},
 
-  -- NOTE: gitsigns integration
-  {
-    "lewis6991/gitsigns.nvim",
-    config = function ()
-      require("gitsigns").setup()
-    end
-  },
+	-- NOTE: gitsigns integration
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	},
 
-  -- TODO: Someday, maybe, find a good image viewing plugin that works in NixOS...
+	-- TODO: Someday, maybe, find a good image viewing plugin that works in NixOS...
 
-  {"norcalli/nvim-colorizer.lua"},
+	-- NOTE: displays hex colors
+	{ "norcalli/nvim-colorizer.lua" },
 
-  {
-    'stevearc/oil.nvim',
-    ---@module 'oil'
-    ---@type oil.SetupOpts
-    opts = {},
-    -- Optional dependencies
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
-    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-    lazy = false,
-  },
+	-- NOTE: Really cool fule browser
+	-- TODO: make better keybinds for navigation, the default ones are kinda hard to reach
+	{
+		"stevearc/oil.nvim",
+		---@module 'oil'
+		---@type oil.SetupOpts
+		opts = {},
+		-- Optional dependencies
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+		-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+		lazy = false,
+	},
 
-  {
-      "nvzone/typr",
-      dependencies = "nvzone/volt",
-      opts = {},
-      cmd = { "Typr", "TyprStats" },
-  },
+	-- NOTE: beautiful typing practice plugin in neovim
+	{
+		"nvzone/typr",
+		dependencies = "nvzone/volt",
+		opts = {},
+		cmd = { "Typr", "TyprStats" },
+	},
 }

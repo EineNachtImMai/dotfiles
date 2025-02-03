@@ -20,5 +20,7 @@ lsp.rust_analyzer.setup {}
 
 lsp.gopls.setup {}
 
+lsp.pyright.setup {}
+
 -- TODO: For some reason, the LSP is running but doesn't do anything. I'll have to figure it out.
 -- lsp.ts_ls.setup {}

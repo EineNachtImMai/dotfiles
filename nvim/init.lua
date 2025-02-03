@@ -16,7 +16,12 @@ require("config.project")
 require("config.cmp")
 require("config.format")
 require("config.tiny-inline-diagnostic")
-require("config.obsidian")
+-- require("config.obsidian")
+-- require("config.markview")
+
+require("obsidian").setup(require("config.obsidian"))
+require("typr").setup(require("config.typr"))
+
 
 -- set handler for displaying diagnostics
 vim.diagnostic.config({ virtual_text = false })
@@ -39,32 +44,20 @@ require("Comment").setup()
 -- add custom keybinds to which-key.nvim
 require("which-key").add(require("which-key-keybinds"))
 
--- setup nvim-tree
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.conceallevel = 2
-vim.bo.softtabstop = 2
-
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
--- setup with some options
-require("nvim-tree").setup({
-	sort = {
-		sorter = "case_sensitive",
-	},
-	view = {
-		width = 30,
-	},
-	renderer = {
-		group_empty = true,
-	},
-	filters = {
-		dotfiles = true,
-	},
+vim.api.nvim_create_autocmd("TermOpen",
+  { callback =  function ()
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end }
+)
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        -- Override any unwanted settings
+        vim.opt.conceallevel = 2
+    end,
 })

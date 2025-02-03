@@ -71,4 +71,10 @@ return {
   {"<leader>g", group = "Git"},
   {"<leader>gl","<cmd>LazyGit<cr>", desc = "Open LazyGit (great git TUI)"},
   {"<leader>gs", "<cmd>Gitsigns toggle_signs<cr>", desc = "Toggle git signs"},
+
+  {"<leader>c", "<cmd>:e ~/.config/nvim/init.lua<cr>", desc = "Edit neovim configuration (use with caution)"},
+
+  {"<leader>T", group="Typr"},
+  {"<leader>Tt", "<cmd>Typr<cr>", desc = "Open Typr"},
+  {"<leader>Td", "<cmd>TyprStats<cr>", desc = "Open Typr stats tab"},
 }

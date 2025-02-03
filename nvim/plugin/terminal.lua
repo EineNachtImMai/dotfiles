@@ -49,4 +49,10 @@ vim.keymap.set(
   end,
   { noremap = true, silent = true })
 
+vim.keymap.set(
+  {"t"},
+  '<ESC><ESC>',
+  "<c-\\><c-n><c-w>W",
+  { noremap = true, silent = true })
+
 return TerminalToggle
