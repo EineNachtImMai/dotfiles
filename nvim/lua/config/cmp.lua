@@ -39,13 +39,27 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' }, -- For luasnip users.
-  }, {
     { name = 'buffer' },
   }),
 
   experimental = {
     ghost_text = true,
   }
+})
+--
+-- Disable cmp-buffer for Markdown and txt files
+cmp.setup.filetype({ 'markdown', 'txt' }, {
+  sources = cmp.config.sources({
+    {
+    name = 'nvim_lsp',
+    option = {
+        markdown_oxide = {
+            keyword_pattern = [[\(\k\| \|\/\|#\)\+]]
+            }
+        }
+    },
+    { name = 'luasnip' }, -- For luasnip users.
+  })
 })
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).

@@ -344,7 +344,35 @@ return {
 	{
 		"nvzone/typr",
 		dependencies = "nvzone/volt",
-		opts = {},
+		opts = {
+			mode = "phrases",
+			kblayout = "azerty",
+		},
 		cmd = { "Typr", "TyprStats" },
 	},
+
+	-- NOTE: Minimal keystroke display
+	{
+		"nvzone/showkeys",
+		cmd = "ShowkeysToggle",
+		opts = {
+			winopts = {
+				border = "rounded",
+			},
+		},
+	},
+	{
+		"nvzone/volt",
+	},
+	{ "echasnovski/mini.nvim", version = "*" },
+    {
+        'nvimdev/lspsaga.nvim',
+        config = function()
+            require('lspsaga').setup({})
+        end,
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter', -- optional
+            'nvim-tree/nvim-web-devicons',     -- optional
+        }
+    },
 }

@@ -16,11 +16,12 @@ require("config.project")
 require("config.cmp")
 require("config.format")
 require("config.tiny-inline-diagnostic")
--- require("config.obsidian")
--- require("config.markview")
+require("config.mini")
+require("config.markview")
+
+
 
 require("obsidian").setup(require("config.obsidian"))
-require("typr").setup(require("config.typr"))
 
 
 -- set handler for displaying diagnostics
