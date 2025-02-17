@@ -170,15 +170,7 @@ return {
 	-- NOTE: Vim syntax highlighting for .kbd files. I use kanata for a few remaps, so this comes handy every so often.
 	{ "kmonad/kmonad-vim" },
 
-	-- NOTE: awesome plugin for editing and writing markdown. Renders it right into the editor, great for visualizing it better.
-	--[[ {
-		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
-		---@module 'render-markdown'
-		---@type render.md.UserConfig
-		opts = {},
-	}, ]]
-
+    -- NOTE: substited this in the place of render-markdown, mostly because i like the style better
 	{
 		"OXY2DEV/markview.nvim",
 		lazy = false,
@@ -297,8 +289,8 @@ return {
 		opts = {
 			show_icons = true,
 			leader_key = ";", -- Recommended to be a single key
-			buffer_leader_key = "m", -- Per Buffer Mappings
-			-- global_bookmarks = true, -- Allow the bookmarks to not be project-dependent
+			-- buffer_leader_key = "M", -- Per Buffer Mappings
+			global_bookmarks = true, -- Allow the bookmarks to not be project-dependent
 		},
 	},
 
@@ -361,18 +353,24 @@ return {
 			},
 		},
 	},
-	{
+
+    -- WARN: wanted to use this to develop the UI for my plugins, but there's no documentation yet :/
+	--[[ {
 		"nvzone/volt",
-	},
+	}, ]]
+
+    -- NOTE: AWESOME collection of plugins, echanovski is an insanely prolific dev
 	{ "echasnovski/mini.nvim", version = "*" },
+
+    -- NOTE: movement plugin
     {
-        'nvimdev/lspsaga.nvim',
-        config = function()
-            require('lspsaga').setup({})
-        end,
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter', -- optional
-            'nvim-tree/nvim-web-devicons',     -- optional
-        }
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        ---@type Flash.Config
+        opts = {},
+        -- stylua: ignore
+        keys = {
+            { "z<space>", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+        },
     },
 }

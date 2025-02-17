@@ -18,6 +18,7 @@ require("config.format")
 require("config.tiny-inline-diagnostic")
 require("config.mini")
 require("config.markview")
+require("config.luasnip")
 
 
 
