@@ -41,6 +41,8 @@ return {
   {
     mode = { "n" },
     { "<leader>/", require("Comment.api").toggle.linewise.current, desc = "Comment Line" }, -- the easier one: normal mode, linewise comment
+
+    {"<Esc>", "<cmd>nohlsearch<cr>", desc = "disable highlight for search"},
   },
   {
     mode = {"v"},

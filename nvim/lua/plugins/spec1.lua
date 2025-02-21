@@ -170,7 +170,7 @@ return {
 	-- NOTE: Vim syntax highlighting for .kbd files. I use kanata for a few remaps, so this comes handy every so often.
 	{ "kmonad/kmonad-vim" },
 
-    -- NOTE: substited this in the place of render-markdown, mostly because i like the style better
+	-- NOTE: substited this in the place of render-markdown, mostly because i like the style better
 	{
 		"OXY2DEV/markview.nvim",
 		lazy = false,
@@ -354,23 +354,23 @@ return {
 		},
 	},
 
-    -- WARN: wanted to use this to develop the UI for my plugins, but there's no documentation yet :/
+	-- WARN: wanted to use this to develop the UI for my plugins, but there's no documentation yet :/
 	--[[ {
 		"nvzone/volt",
 	}, ]]
 
-    -- NOTE: AWESOME collection of plugins, echanovski is an insanely prolific dev
+	-- NOTE: AWESOME collection of plugins, echanovski is an insanely prolific dev
 	{ "echasnovski/mini.nvim", version = "*" },
 
-    -- NOTE: movement plugin
-    {
-        "folke/flash.nvim",
-        event = "VeryLazy",
-        ---@type Flash.Config
-        opts = {},
+	-- NOTE: movement plugin
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		---@type Flash.Config
+		opts = {},
         -- stylua: ignore
         keys = {
             { "z<space>", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
         },
-    },
+	},
 }
