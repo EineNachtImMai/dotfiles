@@ -44,3 +44,5 @@ require("lspconfig").markdown_oxide.setup({
     ),
     on_attach = on_attach -- configure your on attach config
 })
+
+lsp.haskell_ls.setup {}

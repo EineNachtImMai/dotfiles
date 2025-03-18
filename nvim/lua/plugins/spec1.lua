@@ -56,6 +56,46 @@ return {
 	-- NOTE: syntax highlighting using tree-sitter.
 	{
 		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = { "nu" }, -- Ensure the "nu" parser is installed
+				highlight = {
+					enable = true, -- Enable syntax highlighting
+				},
+				-- OPTIONAL!! These enable ts-specific textobjects.
+				-- So you can hit `yaf` to copy the closest function,
+				-- `dif` to clear the content of the closest function,
+				-- or whatever keys you map to what query.
+				textobjects = {
+					select = {
+						enable = true,
+						keymaps = {
+							-- You can use the capture groups defined in textobjects.scm
+							-- For example:
+							-- Nushell only
+							["aP"] = "@pipeline.outer",
+							["iP"] = "@pipeline.inner",
+
+							-- supported in other languages as well
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+							["al"] = "@loop.outer",
+							["il"] = "@loop.inner",
+							["aC"] = "@conditional.outer",
+							["iC"] = "@conditional.inner",
+							["iS"] = "@statement.inner",
+							["aS"] = "@statement.outer",
+						}, -- keymaps
+					}, -- select
+				}, -- textobjects
+			})
+		end,
+		dependencies = {
+			-- Install official queries and filetype detection
+			-- alternatively, see section "Install official queries only"
+			{ "nushell/tree-sitter-nu" },
+		},
+		build = ":TSUpdate",
 	},
 
 	-- NOTE: autocompletion from snippets.
@@ -75,6 +115,7 @@ return {
 		"L3MON4D3/LuaSnip",
 		dependencies = { "rafamadriz/friendly-snippets" },
 	}, -- Required
+
 	{ "rafamadriz/friendly-snippets" },
 
 	-- NOTE: nvim-cmp source for neovim's built-in language server client.
@@ -372,5 +413,63 @@ return {
         keys = {
             { "z<space>", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
         },
+	},
+
+	-- NOTE: devdocs integration
+	{
+		"maskudo/devdocs.nvim",
+		lazy = false,
+		dependencies = {
+			"folke/snacks.nvim",
+		},
+		keys = {
+			{
+				"<leader>ho",
+				mode = "n",
+				"<cmd>DevDocs get<cr>",
+				desc = "Get Devdocs",
+			},
+			{
+				"<leader>hi",
+				mode = "n",
+				"<cmd>DevDocs install<cr>",
+				desc = "Install Devdocs",
+			},
+			{
+				"<leader>hv",
+				mode = "n",
+				function()
+					local devdocs = require("devdocs")
+					local installedDocs = devdocs.GetInstalledDocs()
+					vim.ui.select(installedDocs, {}, function(selected)
+						if not selected then
+							return
+						end
+						local docDir = devdocs.GetDocDir(selected)
+						-- prettify the filename as you wish
+						Snacks.picker.files({ cwd = docDir })
+					end)
+				end,
+				desc = "View Devdocs",
+			},
+		},
+		opts = {
+			ensure_installed = {
+				"go",
+				-- "html",
+				-- "dom",
+				-- "http",
+				-- "css",
+				"javascript",
+				"rust",
+				-- "lua~5.1",
+				-- "openjdk~21"
+			},
+		},
+	},
+	{
+		"mrcjkb/haskell-tools.nvim",
+		version = "^4", -- Recommended
+		lazy = false, -- This plugin is already lazy
 	},
 }

@@ -16,7 +16,7 @@ function TerminalToggle.toggle()
         vim.api.nvim_win_set_height(0, 10)
 
         -- Start the terminal
-        vim.fn.termopen(os.getenv("SHELL") or "bash")
+        vim.fn.termopen("nu")
 
         -- Automatically enter terminal mode
         vim.cmd("startinsert")
