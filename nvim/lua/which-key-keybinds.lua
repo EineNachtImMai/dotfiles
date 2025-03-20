@@ -14,6 +14,8 @@ return {
   { "<leader>sc", "<cmd>Telescope commands<cr>", desc = "Browse Commands"},
   { "<leader>sp", "<cmd>Telescope neoclip<cr>", desc = "Browse Registers for pasting"},
 
+  { "<leader>S", group = "Sessions"},
+
   {"<leader>;", "<cmd>Alpha<cr>", desc = "Dashboard"},
 
   {"<leader>l", group = "LSP"},
@@ -36,7 +38,6 @@ return {
   {"<leader>op", "<cmd>ObsidianPasteImg<cr>", desc = "Paste Image from clipboard"},
 
   {"<leader>e", "<cmd>Oil<cr>", desc = "Oil File Explorer"},
-  {"<leader>E", "<cmd>NvimTreeToggle<cr>", desc = "NvimTree  Explorer (deprecated)"},
 
   {
     mode = { "n" },

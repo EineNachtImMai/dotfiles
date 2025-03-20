@@ -19,6 +19,8 @@ require("config.tiny-inline-diagnostic")
 require("config.mini")
 require("config.markview")
 require("config.luasnip")
+require("config.possession")
+require("config.ufo")
 
 
 

@@ -467,9 +467,54 @@ return {
 			},
 		},
 	},
+
+	-- NOTE: because we're doing haskell in class rn
 	{
 		"mrcjkb/haskell-tools.nvim",
 		version = "^4", -- Recommended
 		lazy = false, -- This plugin is already lazy
+	},
+
+	-- NOTE: session manager for neovim, because I feel like sessions are my next big upgrade to my workflow
+	{
+		"gennaro-tedesco/nvim-possession",
+		dependencies = {
+			"ibhagwan/fzf-lua",
+		},
+		config = true,
+		keys = {
+			{
+				"<leader>Sl",
+				function()
+					require("nvim-possession").list()
+				end,
+				desc = "📌list sessions",
+			},
+			{
+				"<leader>Sn",
+				function()
+					require("nvim-possession").new()
+				end,
+				desc = "📌create new session",
+			},
+			{
+				"<leader>Su",
+				function()
+					require("nvim-possession").update()
+				end,
+				desc = "📌update current session",
+			},
+			{
+				"<leader>Sd",
+				function()
+					require("nvim-possession").delete()
+				end,
+				desc = "📌delete selected session",
+			},
+		},
+	},
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = "kevinhwang91/promise-async",
 	},
 }
