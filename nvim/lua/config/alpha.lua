@@ -6,7 +6,6 @@ end
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.header.val = {
 
-      [[                                                   ]],
       [[                                              ___  ]],
       [[                                           ,o88888 ]],
       [[                                        ,o8888888' ]],
@@ -37,7 +36,7 @@ dashboard.section.header.val = {
    dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
    dashboard.button("p", "  Projects", ":Telescope projects <cr>"),
    dashboard.button("r", "󰅐  Recently used files", ":Telescope oldfiles <CR>"),
-   dashboard.button("t", "󰍉  Find text", ":Telescope live_grep <CR>"),
+   -- dashboard.button("t", "󰍉  Find text", ":Telescope live_grep <CR>"),
    dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua<CR>"),
    dashboard.button("q", "󰈆  Quit Neovim", ":qa<CR>"),
 }

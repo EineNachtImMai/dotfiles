@@ -6,15 +6,15 @@ return {
   { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Browse Projects" },
   { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent Files"},
 
-  { "<leader>s", group = "Search"},
-  { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Browse Find Help"},
-  { "<leader>sm", "<cmd>Telescope man_pages<cr>", desc = "Browse Man Pages"},
-  { "<leader>sr", "<cmd>Telescope registers<cr>", desc = "Browse Registers"},
-  { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Browse Keymaps"},
-  { "<leader>sc", "<cmd>Telescope commands<cr>", desc = "Browse Commands"},
-  { "<leader>sp", "<cmd>Telescope neoclip<cr>", desc = "Browse Registers for pasting"},
+  { "<leader>S", group = "Search"},
+  { "<leader>Sh", "<cmd>Telescope help_tags<cr>", desc = "Browse Find Help"},
+  { "<leader>Sm", "<cmd>Telescope man_pages<cr>", desc = "Browse Man Pages"},
+  { "<leader>Sr", "<cmd>Telescope registers<cr>", desc = "Browse Registers"},
+  { "<leader>Sk", "<cmd>Telescope keymaps<cr>", desc = "Browse Keymaps"},
+  { "<leader>Sc", "<cmd>Telescope commands<cr>", desc = "Browse Commands"},
+  { "<leader>Sp", "<cmd>Telescope neoclip<cr>", desc = "Browse Registers for pasting"},
 
-  { "<leader>S", group = "Sessions"},
+  { "<leader>s", group = "Sessions"},
 
   {"<leader>;", "<cmd>Alpha<cr>", desc = "Dashboard"},
 

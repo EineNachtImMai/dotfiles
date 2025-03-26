@@ -1,104 +1,106 @@
-local cmp = require('cmp')
+local cmp = require("cmp")
 local luasnip = require("luasnip")
 
 cmp.setup({
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-    end,
-  },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
-            luasnip.expand_or_jump()
-          else
-            fallback()
-          end
-        end, {"i", "s"}),
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+		end,
+	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+	mapping = cmp.mapping.preset.insert({
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+		-- ["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
 
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, {"i", "s"}),   ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' }, -- For luasnip users.
-    { name = 'buffer' },
-  }),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<C-Space>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<C-CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+	}),
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" }, -- For luasnip users.
+		{ name = "buffer" },
+	}),
 
-  experimental = {
-    ghost_text = true,
-  }
+	experimental = {
+		ghost_text = true,
+	},
 })
 
 local ls = require("luasnip")
 ls.config.set_config({
-    history = false,
-    updateevent = "TextChanged,TextChangedI",
+	history = false,
+	updateevent = "TextChanged,TextChangedI",
 })
 
 for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/custom/snippets/*.lua", true)) do
-    loadfile(ft_path)()
+	loadfile(ft_path)()
 end
 
-vim.keymap.set({"i", "s"}, "c-k", function ()
-    if ls.expand_or_jumpable() then
-        ls.expand_or_jump()
-    end
-end, {silent = true})
+vim.keymap.set({ "i", "s" }, "c-k", function()
+	if ls.expand_or_jumpable() then
+		ls.expand_or_jump()
+	end
+end, { silent = true })
 
-vim.keymap.set({"i", "s"}, "c-j", function ()
-    if ls.jumpable(-1) then
-        ls.jump(-1)
-    end
-end, {silent = true})
+vim.keymap.set({ "i", "s" }, "c-j", function()
+	if ls.jumpable(-1) then
+		ls.jump(-1)
+	end
+end, { silent = true })
 
 -- Disable cmp-buffer for Markdown and txt files
-cmp.setup.filetype({ 'markdown', 'txt' }, {
-  sources = cmp.config.sources({
-    {
-    name = 'nvim_lsp',
-    option = {
-        markdown_oxide = {
-            keyword_pattern = [[\(\k\| \|\/\|#\)\+]]
-            }
-        }
-    },
-    { name = 'luasnip' }, -- For luasnip users.
-  })
+cmp.setup.filetype({ "markdown", "txt" }, {
+	sources = cmp.config.sources({
+		{
+			name = "nvim_lsp",
+			option = {
+				markdown_oxide = {
+					keyword_pattern = [[\(\k\| \|\/\|#\)\+]],
+				},
+			},
+		},
+		{ name = "luasnip" }, -- For luasnip users.
+	}),
 })
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
+cmp.setup.cmdline({ "/", "?" }, {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "buffer" },
+	},
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  }),
-  matching = { disallow_symbol_nonprefix_matching = false }
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}, {
+		{ name = "cmdline" },
+	}),
+	matching = { disallow_symbol_nonprefix_matching = false },
 })

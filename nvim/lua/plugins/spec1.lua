@@ -168,10 +168,10 @@ return {
 	},
 
 	-- NOTE: multiple cursor in nvim.
-	{
+	--[[ {
 		"mg979/vim-visual-multi",
 		branch = "master",
-	},
+	}, ]]
 
 	-- NOTE: Nicer UI for notifications, commands, password input, ...
 	{
@@ -206,7 +206,7 @@ return {
 	{ "ThePrimeagen/vim-be-good" },
 
 	-- NOTE: Helps integrate nvim into tmux.
-	{ "christoomey/vim-tmux-navigator", lazy = false },
+	-- { "christoomey/vim-tmux-navigator", lazy = false },
 
 	-- NOTE: Vim syntax highlighting for .kbd files. I use kanata for a few remaps, so this comes handy every so often.
 	{ "kmonad/kmonad-vim" },
@@ -415,6 +415,19 @@ return {
         },
 	},
 
+	-- lazy.nvim
+	{
+		"folke/snacks.nvim",
+		---@type snacks.Config
+		opts = {
+			image = {
+				-- your image configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			},
+		},
+	},
+
 	-- NOTE: devdocs integration
 	{
 		"maskudo/devdocs.nvim",
@@ -473,6 +486,7 @@ return {
 		"mrcjkb/haskell-tools.nvim",
 		version = "^4", -- Recommended
 		lazy = false, -- This plugin is already lazy
+		ft = "haskell",
 	},
 
 	-- NOTE: session manager for neovim, because I feel like sessions are my next big upgrade to my workflow
@@ -484,28 +498,28 @@ return {
 		config = true,
 		keys = {
 			{
-				"<leader>Sl",
+				"<leader>sl",
 				function()
 					require("nvim-possession").list()
 				end,
 				desc = "📌list sessions",
 			},
 			{
-				"<leader>Sn",
+				"<leader>sn",
 				function()
 					require("nvim-possession").new()
 				end,
 				desc = "📌create new session",
 			},
 			{
-				"<leader>Su",
+				"<leader>su",
 				function()
 					require("nvim-possession").update()
 				end,
 				desc = "📌update current session",
 			},
 			{
-				"<leader>Sd",
+				"<leader>sd",
 				function()
 					require("nvim-possession").delete()
 				end,
@@ -516,5 +530,18 @@ return {
 	{
 		"kevinhwang91/nvim-ufo",
 		dependencies = "kevinhwang91/promise-async",
+	},
+
+	{
+		"swaits/zellij-nav.nvim",
+		lazy = true,
+		event = "VeryLazy",
+		keys = {
+			{ "<c-h>", "<cmd>ZellijNavigateLeftTab<cr>", { silent = true, desc = "navigate left or tab" } },
+			{ "<c-j>", "<cmd>ZellijNavigateDown<cr>", { silent = true, desc = "navigate down" } },
+			{ "<c-k>", "<cmd>ZellijNavigateUp<cr>", { silent = true, desc = "navigate up" } },
+			{ "<c-l>", "<cmd>ZellijNavigateRightTab<cr>", { silent = true, desc = "navigate right or tab" } },
+		},
+		opts = {},
 	},
 }
