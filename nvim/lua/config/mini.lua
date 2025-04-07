@@ -1,8 +1,8 @@
 local mini_modules = {
-    "mini.ai",
-    "mini.surround"
+	"mini.ai",
+	"mini.surround",
 }
 
 for _, module in ipairs(mini_modules) do
-    require(module).setup()
+	require(module).setup()
 end

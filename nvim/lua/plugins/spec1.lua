@@ -474,11 +474,11 @@ return {
 				"javascript",
 				"rust",
 				"lua~5.4",
-                "git",
-                "http",
-                "jq",
-                "latex",
-                "nix",
+				"git",
+				"http",
+				"jq",
+				"latex",
+				"nix",
 			},
 		},
 	},
@@ -530,13 +530,13 @@ return {
 		},
 	},
 
-    -- NOTE: better folding
+	-- NOTE: better folding
 	{
 		"kevinhwang91/nvim-ufo",
 		dependencies = "kevinhwang91/promise-async",
 	},
 
-    -- NOTE: better integration with zellij, for when I get to using it eventually
+	-- NOTE: better integration with zellij, for when I get to using it eventually
 	{
 		"swaits/zellij-nav.nvim",
 		lazy = true,

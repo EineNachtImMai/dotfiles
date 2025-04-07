@@ -22,10 +22,7 @@ require("config.luasnip")
 require("config.possession")
 require("config.ufo")
 
-
-
 require("obsidian").setup(require("config.obsidian"))
-
 
 -- set handler for displaying diagnostics
 vim.diagnostic.config({ virtual_text = false })
@@ -51,17 +48,17 @@ require("which-key").add(require("which-key-keybinds"))
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
-vim.api.nvim_create_autocmd("TermOpen",
-  { callback =  function ()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
-  end }
-)
+vim.api.nvim_create_autocmd("TermOpen", {
+	callback = function()
+		vim.opt.number = false
+		vim.opt.relativenumber = false
+	end,
+})
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "markdown",
-    callback = function()
-        -- Override any unwanted settings
-        vim.opt.conceallevel = 2
-    end,
+	pattern = "markdown",
+	callback = function()
+		-- Override any unwanted settings
+		vim.opt.conceallevel = 2
+	end,
 })

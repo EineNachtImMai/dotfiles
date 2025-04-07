@@ -18,12 +18,16 @@ return {
 	s("hello", {
 		t("println!('Hello World')"),
 	}),
-    s("snip", fmt(
-    [[ 
+	s(
+		"snip",
+		fmt(
+			[[ 
     ls.add_snippets("{}", require("custom.snippets.{}"))
     ]],
-    {
-        i(1), rep(1)
-    }
-    )),
+			{
+				i(1),
+				rep(1),
+			}
+		)
+	),
 }
