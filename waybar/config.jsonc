@@ -13,7 +13,7 @@
 	"clock": {
 		"format": "   {:%H:%M}",
 		"tooltip": "true",
-        	"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        	"tooltip-format": "<big>{:%d/%m/%Y}</big>\n<tt><small>{calendar}</small></tt>",
         	"format-alt": "   {:%d/%m}"
 	},
 
@@ -31,11 +31,17 @@
       "window-rewrite-default": " ",
       "show-special": true,
       "window-rewrite": {
-          "title<.*youtube.*>": " ", // Windows whose titles contain "youtube"
-          "class<zen>": " ", // Windows whose classes are "firefox"
-          "class<zen> title<.*github.*>": " ", // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
-          "kitty": " ", // Windows that contain "foot" in either class or title. For optimization reasons, it will only match against a title if at least one other window explicitly matches against a title.
-          "title<*.*> nvim>": ""  // captures part of the window title and formats it into output
+          "title<.*youtube.*>": " ",
+          "class<zen>": " ",
+            "class<vlc>": "󰕼 ",
+            "class<spotify>": " ",
+            "class<steam>": " ",
+            "class<discord>": " ",
+          "class<zen> title<.*github.*>": " ",
+          "kitty": " ",
+          "title<*.*> nvim>": " ",
+          "title<*.*> yazi>": " ",
+          "class<thunar>": " ",
       }
   },
 

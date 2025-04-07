@@ -53,6 +53,8 @@ keymap("v", ">", ">gv", opts) -- Left Indentation
 keymap("v", "<a-j>", ":m .+1<cr>==", opts)
 keymap("v", "<a-k>", ":m .-2<cr>==", opts)
 
+keymap("v", "v", "V", opts)
+
 -- Visual Block --
 -- Move text up and down
 --Terminal --

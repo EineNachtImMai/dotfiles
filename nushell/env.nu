@@ -16,3 +16,4 @@
 #
 # You can remove these comments if you want or leave
 # them for future reference.
+$env.MANPAGER = "nvim +Man!"

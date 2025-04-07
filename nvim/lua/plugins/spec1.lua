@@ -469,14 +469,16 @@ return {
 		opts = {
 			ensure_installed = {
 				"go",
-				-- "html",
-				-- "dom",
-				-- "http",
-				-- "css",
+				"html",
+				"http",
 				"javascript",
 				"rust",
-				-- "lua~5.1",
-				-- "openjdk~21"
+				"lua~5.4",
+                "git",
+                "http",
+                "jq",
+                "latex",
+                "nix",
 			},
 		},
 	},
@@ -527,11 +529,14 @@ return {
 			},
 		},
 	},
+
+    -- NOTE: better folding
 	{
 		"kevinhwang91/nvim-ufo",
 		dependencies = "kevinhwang91/promise-async",
 	},
 
+    -- NOTE: better integration with zellij, for when I get to using it eventually
 	{
 		"swaits/zellij-nav.nvim",
 		lazy = true,
