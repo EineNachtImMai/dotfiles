@@ -4,4 +4,5 @@ let abbreviations = {
     rb: "sudo rebuild"
     lg: "lazygit -p ."
     py: "python3"
+    termvis: "termvisage -r ."
 }

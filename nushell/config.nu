@@ -19,12 +19,14 @@ $env.PROMPT_MULTILINE_INDICATOR = ""
 
 source ~/.zoxide.nu
 source ./abbreviation_tweaks.nu
+source ./fzf.nu
 
 alias l = ls -la
 alias c = clear
 # alias nv = nvim
-alias cd = z
+alias cd = z # | where type == dir
 # alias rhs = runhaskell
+def copy [file] {cat $file | wl-copy}
 
 fastfetch
 
