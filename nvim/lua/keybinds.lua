@@ -19,6 +19,10 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
+-- unbind s and S to rebind to other stuff
+vim.keymap.set({ "n", "x" }, "s", "<Nop>", opts)
+vim.keymap.set({ "n", "x" }, "S", "<Nop>", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts) -- left window
 keymap("n", "<C-k>", "<C-w>k", opts) -- up window

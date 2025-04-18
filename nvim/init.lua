@@ -21,8 +21,11 @@ require("config.markview")
 require("config.luasnip")
 require("config.possession")
 require("config.ufo")
+require("config.obsidian")
 
-require("obsidian").setup(require("config.obsidian"))
+-- NOTE: NEEDS to be after the other "require"
+require("which-key-keybinds")
+
 
 -- set handler for displaying diagnostics
 vim.diagnostic.config({ virtual_text = false })
@@ -42,8 +45,6 @@ vim.diagnostic.config({
 -- setup comment.nvim
 require("Comment").setup()
 
--- add custom keybinds to which-key.nvim
-require("which-key").add(require("which-key-keybinds"))
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true

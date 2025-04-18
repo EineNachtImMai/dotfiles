@@ -1,4 +1,4 @@
-return {
+require("obsidian").setup({
 	-- A list of workspace names, paths, and configuration overrides.
 	-- If you use the Obsidian app, the 'path' of a workspace should generally be
 	-- your vault root (where the `.obsidian` folder is located).
@@ -290,4 +290,4 @@ return {
 			return string.format("![%s](%s)", path.name, path)
 		end,
 	},
-}
+})

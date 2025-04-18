@@ -1,4 +1,4 @@
-return {
+require("which-key").add({
 	{ "<leader>f", group = "File Search" },
 	{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File", mode = "n" },
 	{ "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Color scheme" },
@@ -93,4 +93,4 @@ return {
 	{ "<leader>T", group = "Typr" },
 	{ "<leader>Tt", "<cmd>Typr<cr>", desc = "Open Typr" },
 	{ "<leader>Td", "<cmd>TyprStats<cr>", desc = "Open Typr stats tab" },
-}
+})
