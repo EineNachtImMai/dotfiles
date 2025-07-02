@@ -26,7 +26,6 @@ require("config.obsidian")
 -- NOTE: NEEDS to be after the other "require"
 require("which-key-keybinds")
 
-
 -- set handler for displaying diagnostics
 vim.diagnostic.config({ virtual_text = false })
 
@@ -44,7 +43,6 @@ vim.diagnostic.config({
 
 -- setup comment.nvim
 require("Comment").setup()
-
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true

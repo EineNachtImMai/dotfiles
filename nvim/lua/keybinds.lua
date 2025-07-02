@@ -43,6 +43,10 @@ keymap("n", "<s-tab>", ":bprevious<cr>", opts) -- Previous tab
 keymap("n", "<a-j>", ":m .+1<cr>==", opts) -- Alt-j
 keymap("n", "<a-k>", ":m .-2<cr>==", opts) -- Alt-k
 
+-- go to previous / next quickifx
+vim.keymap.set("n", "gq", vim.diagnostic.goto_next)
+vim.keymap.set("n", "gQ", vim.diagnostic.goto_prev)
+
 -- insert --
 -- press jk fast to exit insert mode
 keymap("i", "jk", "<esc>", opts) -- Insert mode -> jk -> Normal mode

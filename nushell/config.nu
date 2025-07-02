@@ -1,5 +1,7 @@
 $env.STARSHIP_SHELL = "nu"
 
+$env.BROWSER = "zen"
+
 $env.config.show_banner = false
 
 def create_left_prompt [] {
@@ -20,6 +22,7 @@ $env.PROMPT_MULTILINE_INDICATOR = ""
 source ~/.zoxide.nu
 source ./abbreviation_tweaks.nu
 source ./fzf.nu
+source ./download.nu
 
 alias l = ls -la
 alias c = clear

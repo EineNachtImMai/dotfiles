@@ -1,5 +1,13 @@
 local lsp = require("lspconfig")
 
+lsp.tinymist.setup({
+	settings = {
+		formatterMode = "typstyle",
+		exportPdf = "onType",
+		semanticTokens = "disable",
+	},
+})
+
 lsp.nixd.setup({
 	cmd = { "nixd" },
 	settings = {
