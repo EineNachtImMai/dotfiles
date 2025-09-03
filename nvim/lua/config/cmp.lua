@@ -13,9 +13,14 @@ cmp.setup({
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
-		["<C-f>"] = cmp.mapping.scroll_docs(4),
-		-- ["<C-Space>"] = cmp.mapping.complete(),
-		["<C-e>"] = cmp.mapping.abort(),
+		["<C-e>"] = cmp.mapping.scroll_docs(4),
+		["<C-f>"] = cmp.mapping(function(fallback)
+			if luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			else
+				fallback()
+			end
+		end),
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
@@ -50,8 +55,7 @@ cmp.setup({
 	},
 })
 
-local ls = require("luasnip")
-ls.config.set_config({
+luasnip.config.set_config({
 	history = false,
 	updateevent = "TextChanged,TextChangedI",
 })
@@ -61,14 +65,14 @@ for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/custom/snippets/*.lu
 end
 
 vim.keymap.set({ "i", "s" }, "C-k", function()
-	if ls.expand_or_jumpable() then
-		ls.expand_or_jump()
+	if luasnip.expand_or_jumpable() then
+		luasnip.expand_or_jump()
 	end
 end, { silent = true, desc = "expand_or_jump" })
 
 vim.keymap.set({ "i", "s" }, "C-j", function()
-	if ls.jumpable(-1) then
-		ls.jump(-1)
+	if luasnip.jumpable(-1) then
+		luasnip.jump(-1)
 	end
 end, { silent = true })
 

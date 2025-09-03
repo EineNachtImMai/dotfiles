@@ -1,0 +1,6 @@
+abbr "nv"="nvim"
+abbr "rb"="rebuild"
+abbr "up"="update"
+abbr "lg"="lazygit"
+abbr "py"="python3"
+abbr "termvis"="termvisage -r ."

@@ -46,19 +46,19 @@ button:hover#reboot {
 }
 
 #shutdown {
-    background-image: image(url("/home/blackstar/.config/wlogout/icons/shutdown_dark.png"));
+    background-image: image(url("/home/enim/.config/wlogout/icons/shutdown_dark.png"));
     border-radius: 20px 0px 0px 20px;
     margin : 50px 0px 50px 50px;
 }
 
 #reboot {
-    background-image: url("/home/blackstar/.config/wlogout/icons/reboot_dark.png");
+    background-image: url("/home/enim/.config/wlogout/icons/reboot_dark.png");
     border-radius: 0px 0px 0px 0px;
     margin : 50px 0px 50px 0px;
 }
 
 #lock {
-    background-image: image(url("/home/blackstar/.config/wlogout/icons/lock_dark.png"));
+    background-image: image(url("/home/enim/.config/wlogout/icons/lock_dark.png"));
     border-radius: 0px 20px 20px 0px;
     margin : 50px 50px 50px 0px;
 }

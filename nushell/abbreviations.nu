@@ -1,8 +1,7 @@
 let abbreviations = {
     nv: "nvim"
-    rhs: "runhaskell"
     rb: "sudo rebuild"
-    lg: "lazygit -p ."
+    lg: "lazygit"
     py: "python3"
     termvis: "termvisage -r ."
 }

@@ -33,6 +33,7 @@ truncation_symbol = "…/"
 "Documents" = "󰈙 "
 "Downloads" = " "
 "~" = "󰋜 ~"
+"/etc/nixos" = " "
 
 [git_branch]
 symbol = ""

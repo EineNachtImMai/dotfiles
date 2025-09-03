@@ -27,4 +27,24 @@ configs.setup({
 		extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
 		max_file_lines = nil, -- Do not enable for files with more than n lines, int
 	},
+	textobjects = {
+		select = {
+			enable = true,
+			keymaps = {
+				-- You can use the capture groups defined in textobjects.scm
+				-- For example:
+				-- Nushell only
+				["aP"] = "@pipeline.outer",
+				["iP"] = "@pipeline.inner",
+
+				-- supported in other languages as well
+				["al"] = "@loop.outer",
+				["il"] = "@loop.inner",
+				["aC"] = "@conditional.outer",
+				["iC"] = "@conditional.inner",
+				["iS"] = "@statement.inner",
+				["aS"] = "@statement.outer",
+			}, -- keymaps
+		}, -- select
+	}, -- textobjects
 })
