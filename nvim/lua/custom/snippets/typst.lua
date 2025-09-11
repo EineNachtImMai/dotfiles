@@ -596,14 +596,6 @@ supplement: <>,
 		}),
 		{ condition = trigger_does_not_follow_alpha_char * (in_mathzone + in_codezone) }
 	),
-	s(
-		{ trig = "`", wordTrig = false, snippetType = "autosnippet" },
-		fmta("`<>`<>", {
-			i(1),
-			i(0),
-		}),
-		{ condition = -in_mathzone }
-	),
 	-- NOTE: Typst is the same!
 	-- s(
 	--   { trig = "exists", wordTrig = false, snippetType = "autosnippet" },

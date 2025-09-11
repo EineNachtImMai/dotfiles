@@ -39,13 +39,13 @@ return {
 	},
 
 	-- NOTE: fuzzy finder for neovim. Crazy powerful, and has integrations for a lot of plugins.
-	{
+	--[[ {
 		"nvim-telescope/telescope.nvim",
 		lazy = true,
 		dependencies = {
 			{ "nvim-lua/plenary.nvim" },
 		},
-	},
+	}, ]]
 
 	-- NOTE: dashboard for nvim.
 	{
@@ -104,11 +104,6 @@ return {
 	-- NOTE: allows nvim-cmp to autocomplete your nvim commands too.
 	{ "hrsh7th/cmp-cmdline" },
 
-	-- NOTE: sane defaults for the nvim lsp.
-	{
-		"neovim/nvim-lspconfig",
-	},
-
 	-- NOTE: configures LuaLS to recognize vim config variables.
 	{
 		"folke/lazydev.nvim",
@@ -162,7 +157,7 @@ return {
 	},
 
 	-- NOTE: Project management in nvim: detects project directories (for example containing a .git file). Integrates very well with Telescope.
-	{ "ahmedkhalf/project.nvim" },
+	-- { "ahmedkhalf/project.nvim" },
 
 	-- NOTE: Recursively search a directory for a regex.
 	{ "BurntSushi/ripgrep" },
@@ -220,7 +215,7 @@ return {
 		"kawre/leetcode.nvim",
 		build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
 		dependencies = {
-			"nvim-telescope/telescope.nvim",
+			"ibhagwan/fzf-lua",
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 		},
@@ -306,15 +301,15 @@ return {
 	},
 
 	-- NOTE: great clipboard manager for neovim
-	{
+	--[[ {
 		"AckslD/nvim-neoclip.lua",
 		dependencies = {
-			{ "nvim-telescope/telescope.nvim" },
+			{ "ibhagwan/fzf-lua" },
 		},
 		config = function()
 			require("neoclip").setup()
 		end,
-	},
+	}, ]]
 
 	-- NOTE: gitsigns integration
 	{
@@ -628,14 +623,6 @@ return {
 			-- 	return "./" .. os.date("!%Y-%m-%dT%H-%M-%SZ") .. "_code.png"
 			-- end,
 		},
-	},
-	{
-		"chomosuke/typst-preview.nvim",
-		lazy = false, -- or ft = 'typst'
-		version = "1.*",
-		opts = {
-			debug = true,
-		}, -- lazy.nvim will implicitly calls `setup {}`
 	},
 	{
 		"hat0uma/csvview.nvim",

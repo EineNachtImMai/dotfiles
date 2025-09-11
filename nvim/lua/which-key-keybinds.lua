@@ -1,18 +1,13 @@
 require("which-key").add({
-	{ "<leader>f", group = "File Search" },
-	{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find File", mode = "n" },
-	{ "<leader>fc", "<cmd>Telescope colorscheme<cr>", desc = "Color scheme" },
-	{ "<leader>ft", "<cmd>Telescope live_grep<cr>", desc = "Find text in all files" },
-	{ "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Browse Projects" },
-	{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent Files" },
-
-	{ "<leader>S", group = "Search" },
-	{ "<leader>Sh", "<cmd>Telescope help_tags<cr>", desc = "Browse Find Help" },
-	{ "<leader>Sm", "<cmd>Telescope man_pages<cr>", desc = "Browse Man Pages" },
-	{ "<leader>Sr", "<cmd>Telescope registers<cr>", desc = "Browse Registers" },
-	{ "<leader>Sk", "<cmd>Telescope keymaps<cr>", desc = "Browse Keymaps" },
-	{ "<leader>Sc", "<cmd>Telescope commands<cr>", desc = "Browse Commands" },
-	{ "<leader>Sp", "<cmd>Telescope neoclip<cr>", desc = "Browse Registers for pasting" },
+	{ "<leader>f", group = "Search" },
+	{ "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find File", mode = "n" },
+	{ "<leader>ft", "<cmd>FzfLua live_grep<cr>", desc = "Find text in all files" },
+	{ "<leader>fr", "<cmd>FzfLua oldfiles<cr>", desc = "Open Recent Files" },
+	{ "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "Browse Find Help" },
+	{ "<leader>fm", "<cmd>FzfLua man_pages<cr>", desc = "Browse Man Pages" },
+	{ "<leader>fk", "<cmd>FzfLua keymaps<cr>", desc = "Browse Keymaps" },
+	{ "<leader>fc", "<cmd>FzfLua commands<cr>", desc = "Browse Commands" },
+	-- { "<leader>fp", "<cmd>FzfLua neoclip<cr>", desc = "Browse Registers for pasting" },
 
 	{ "<leader>s", group = "Sessions" },
 
@@ -23,8 +18,8 @@ require("which-key").add({
 	{ "<leader>li", "<cmd>LspInfo<cr>", desc = "LSP Info" },
 	{ "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
 	{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename Symbol" },
-	{ "<leader>la", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols" },
-	{ "<leader>la", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols" },
+	{ "<leader>la", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Document Symbols" },
+	{ "<leader>lA", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", desc = "Workspace Symbols" },
 	{ "<leader>lf", "<cmd>Format<cr>", desc = "Format using conform.nvim" },
 
 	{ "<leader>w", proxy = "<c-w>", group = "Windows" }, -- proxy to window mappings

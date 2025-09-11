@@ -1,42 +1,48 @@
-local lsp = require("lspconfig")
-
-lsp.tinymist.setup({
+vim.lsp.config.tinymist = {
+	cmd = { "tinymist" },
+	filetypes = { "typst" },
 	settings = {
 		formatterMode = "typstyle",
 		exportPdf = "onType",
 		semanticTokens = "disable",
 	},
-})
+}
 
-lsp.nixd.setup({
+vim.lsp.config.nixd = {
 	cmd = { "nixd" },
+	filetypes = { "nix" },
 	settings = {
 		nixd = {
-			nixpkgs = {
-				expr = "import <nixpkgs> { }",
-			},
-			formatting = {
-				command = { "alejandra" }, -- or nixfmt or nixpkgs-fmt
-			},
+			nixpkgs = { expr = 'import (builtins.getFlake "/etc/nixos").nixosConfigurations.inputs.nixpkgs {}' },
+			formatting = { command = { "alejandra" } },
 		},
 	},
-})
+}
 
-lsp.lua_ls.setup({})
+vim.lsp.config.lua_ls = {
+	cmd = { "lua-language-server" },
+	filetypes = { "lua" },
+}
 
-lsp.rust_analyzer.setup({})
+vim.lsp.config.rust_analyzer = {
+	cmd = { "rust-analyzer" },
+	filetypes = { "rust" },
+}
 
-lsp.gopls.setup({})
+vim.lsp.config.gopls = {
+	cmd = { "gopls" },
+	filetypes = { "go", "gomod" },
+}
 
-lsp.pyright.setup({})
-
--- TODO: For some reason, the LSP is running but doesn't do anything. I'll have to figure it out.
--- lsp.ts_ls.setup {}
-
--- An example nvim-lspconfig capabilities setting
+vim.lsp.config.pyright = {
+	cmd = { "pyright-langserver", "--stdio" },
+	filetypes = { "python", "py" },
+}
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-require("lspconfig").markdown_oxide.setup({
+vim.lsp.config.markdown_oxide = {
+	cmd = { "markdown_oxide" },
+	filetypes = { "markdown" },
 	-- Ensure that dynamicRegistration is enabled! This allows the LS to take into account actions like the
 	-- Create Unresolved File code action, resolving completions for unindexed code blocks, ...
 	capabilities = vim.tbl_deep_extend("force", capabilities, {
@@ -47,6 +53,28 @@ require("lspconfig").markdown_oxide.setup({
 		},
 	}),
 	on_attach = on_attach, -- configure your on attach config
-})
+}
+
+vim.lsp.config.clangd = {
+	cmd = { "clangd" },
+	filetypes = { "c" },
+}
+
+--[[ vim.lsp.config.bashls = {
+	cmd = { "bash-language-server", "start" },
+	filetypes = { "bash", "sh" },
+}
+vim.lsp.enable("bashls") ]]
 
 -- lsp.haskell_ls.setup {}
+
+vim.lsp.enable({
+	"tinymist",
+	"clangd",
+	"pyright",
+	"gopls",
+	"rust_analyzer",
+	"lua_ls",
+	"nixd",
+	"markdown_oxide",
+})
