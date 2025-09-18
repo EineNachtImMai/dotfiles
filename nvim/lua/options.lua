@@ -22,7 +22,7 @@ opt.ignorecase = true -- Ignore case
 opt.inccommand = "nosplit" -- preview incremental substitute
 opt.incsearch = true
 opt.laststatus = 0
-opt.list = false -- Show some invisible characters (tabs...
+opt.list = true -- Show some invisible characters (tabs...
 opt.mouse = "a" -- Enable mouse mode
 opt.number = true -- Print line number
 opt.pumblend = 10 -- Popup blend
@@ -51,6 +51,7 @@ opt.updatetime = 200 -- Save swap file and trigger CursorHold
 opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
+vim.opt.showcmdloc = 'statusline'
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0

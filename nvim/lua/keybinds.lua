@@ -49,8 +49,8 @@ vim.keymap.set("n", "gQ", vim.diagnostic.goto_prev)
 
 -- insert --
 -- press jk fast to exit insert mode
-keymap("i", "jk", "<esc>", opts) -- Insert mode -> jk -> Normal mode
-keymap("i", "kj", "<esc>", opts) -- Insert mode -> kj -> Normal mode
+--[[ keymap("i", "jk", "<esc>", opts) -- Insert mode -> jk -> Normal mode
+keymap("i", "kj", "<esc>", opts) -- Insert mode -> kj -> Normal mode ]]
 
 -- visual --
 -- stay in indent mode

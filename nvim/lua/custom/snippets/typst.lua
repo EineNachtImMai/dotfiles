@@ -1,4 +1,4 @@
-require("luasnip.session.snippet_collection").clear_snippets("elixir")
+require("luasnip.session.snippet_collection").clear_snippets("typst")
 
 local ls = require("luasnip")
 local s = ls.snippet
@@ -180,13 +180,12 @@ end
 
 return {
 	-- NOTE: Remove auto snippet in the future,
-	s("example", t("This is a Typst snippet!")),
 	s({ trig = "toc", snippetType = "autosnippet" }, t("#outline()"), { condition = line_begin }),
 	s(
 		{ trig = "#grid", snippetType = "autosnippet" },
 		fmta(
 			[[
-#subpar.grid(
+#grid(
   columns: <>,
   inset: (top: 2em, left: 2em, right: 2em, bottom: 2em),
   gutter: 20pt,
@@ -446,11 +445,13 @@ supplement: <>,
 	--   { condition = in_mathzone * trigger_does_not_follow_alpha_char }
 	-- ),
 	s(
-		{ trig = "int", wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "intg([%w])", wordTrig = false, snippetType = "autosnippet" },
 		fmta("integral_(<>)^(<>)<>", {
 			d(1, get_visual),
 			i(2),
-			i(0),
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
 		}),
 		{ condition = in_mathzone * trigger_does_not_follow_alpha_char }
 	),
@@ -461,14 +462,13 @@ supplement: <>,
 	-- s({ trig = "NN", snippetType = "autosnippet" }, t("\\mathbb{N}"), { condition = in_mathzone }),
 	-- s({ trig = "ZZ", snippetType = "autosnippet" }, t("\\mathbb{Z}"), { condition = in_mathzone }),
 	--- Relations
-	s({
+	--[[ s({
 		trig = "=",
 		name = "_insert_equal_sign_as_text_node",
 		desc = "Insert a text node in math mode to tab over it. It's nice!",
 		hidden = true,
 		snippetType = "autosnippet",
-	}, t("="), { condition = in_mathzone }),
-	s({ trig = "implies", snippetType = "autosnippet" }, t("==>"), { condition = in_mathzone }),
+	}, t("="), { condition = in_mathzone }), ]]
 	--- For now going to make this a snippet
 	s({ trig = "implies", snippetType = "autosnippet" }, t("==>"), { condition = in_mathzone }),
 	s({ trig = "neq", snippetType = "autosnippet" }, t("!="), { condition = in_mathzone }),
@@ -563,39 +563,6 @@ supplement: <>,
 		{ condition = in_mathzone }
 	),
 	-- TODO: Really hink about if you want these vvv
-	s(
-		{ trig = "(", wordTrig = false, desc = "Autopairs", snippetType = "autosnippet" },
-		fmta("(<>)<>", {
-			iv(1),
-			i(0),
-		}),
-		{ condition = -in_textzone * (in_mathzone + in_codezone) }
-	),
-	s(
-		{ trig = "{", desc = "Autopairs", snippetType = "autosnippet" },
-		fmta("{<>}<>", {
-			iv(1),
-			i(0),
-		}),
-		{ condition = in_mathzone + in_codezone }
-	),
-	s(
-		{ trig = "[", wordTrig = false, desc = "Autopairs", snippetType = "autosnippet" },
-		fmta("[<>]<>", {
-			iv(1),
-			i(0),
-		}),
-		{ condition = in_mathzone + in_codezone }
-	),
-	-- TODO: Really hink about if you want these ^^^
-	s(
-		{ trig = [["]], wordTrig = false, snippetType = "autosnippet" },
-		fmta([["<>"<>]], {
-			iv(1),
-			i(0),
-		}),
-		{ condition = trigger_does_not_follow_alpha_char * (in_mathzone + in_codezone) }
-	),
 	-- NOTE: Typst is the same!
 	-- s(
 	--   { trig = "exists", wordTrig = false, snippetType = "autosnippet" },
@@ -688,24 +655,24 @@ $<>]],
 		}),
 		{ condition = trigger_does_not_follow_alpha_char }
 	),
-	s(
-		{ trig = "(%a)mb", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
-		fmta([[upright(bold(<>))<>]], {
-			f(function(_, snip)
-				return snip.captures[1]
-			end),
-			i(0),
-		}),
-		{ condition = in_mathzone }
-	),
-	s(
-		{ trig = "mb", wordTrig = false, snippetType = "autosnippet" },
-		fmta([[upright(bold(<>))<>]], {
-			d(1, get_visual),
-			i(0),
-		}),
-		{ condition = in_mathzone * trigger_does_not_follow_alpha_char }
-	),
+	-- s(
+	-- { trig = "(%a)mb", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+	-- fmta([[upright(bold(<>))<>]], {
+	-- f(function(_, snip)
+	-- return snip.captures[1]
+	-- end),
+	-- i(0),
+	-- }),
+	-- { condition = in_mathzone }
+	-- ),
+	-- s(
+	-- { trig = "mb", wordTrig = false, snippetType = "autosnippet" },
+	-- fmta([[upright(bold(<>))<>]], {
+	-- d(1, get_visual),
+	-- i(0),
+	-- }),
+	-- { condition = in_mathzone * trigger_does_not_follow_alpha_char }
+	-- ),
 	s(
 		{ trig = "mB", wordTrig = false, snippetType = "autosnippet" },
 		fmta([[bb(<>)<>]], {

@@ -48,10 +48,10 @@ return {
 	}, ]]
 
 	-- NOTE: dashboard for nvim.
-	{
+	--[[ {
 		"goolord/alpha-nvim",
 		lazy = true,
-	},
+	}, ]]
 
 	-- NOTE: syntax highlighting using tree-sitter.
 	{
@@ -59,11 +59,11 @@ return {
 		dependencies = {
 			-- Install official queries and filetype detection
 			-- alternatively, see section "Install official queries only"
-			{ "nushell/tree-sitter-nu" },
+			-- { "nushell/tree-sitter-nu" },
 			{ "OXY2DEV/markview.nvim" },
 		},
 		build = ":TSUpdate",
-        lazy = false,
+		lazy = false,
 	},
 
 	-- NOTE: autocompletion from snippets.
@@ -140,7 +140,8 @@ return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		opts = {},
+		opts = {
+		},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
@@ -166,19 +167,19 @@ return {
 	{ "lambdalisue/vim-suda" },
 
 	-- NOTE: good little plugin for practicing basic navigation.
-	{ "ThePrimeagen/vim-be-good" },
+	-- { "ThePrimeagen/vim-be-good" },
 
 	-- NOTE: Helps integrate nvim into tmux.
 	-- { "christoomey/vim-tmux-navigator", lazy = false },
 
 	-- NOTE: Vim syntax highlighting for .kbd files. I use kanata for a few remaps, so this comes handy every so often.
-	{ "kmonad/kmonad-vim" },
+	-- { "kmonad/kmonad-vim" },
 
 	-- NOTE: substited this in the place of render-markdown, mostly because i like the style better
 	{
 		"OXY2DEV/markview.nvim",
 		lazy = false,
-        priority = 49,
+		priority = 49,
 	},
 
 	-- NOTE: I'm using it right now while writing this. Create and browse different comment tage: todo, note, hack... and highlights it accordingly.
@@ -190,7 +191,7 @@ return {
 
 	-- NOTE: Create and edit obsidian notes in neovim. I love nvim, but markdown is much more readable in obsidian, and some things like pdf annotations
 	-- just aren't possible without it.
-	{
+	--[[ {
 		"epwalsh/obsidian.nvim",
 		version = "*", -- recommended, use latest release instead of latest commit
 		lazy = true,
@@ -207,11 +208,11 @@ return {
 				},
 			},
 		},
-	},
+	}, ]]
 
 	-- NOTE: Leetcode challenges built right into neovim, meaning you can use the editor you're actually used to, without all the tedious copy-pasting for tests
 	-- and submitting
-	{
+	--[[ {
 		"kawre/leetcode.nvim",
 		build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
 		dependencies = {
@@ -220,10 +221,10 @@ return {
 			"MunifTanjim/nui.nvim",
 		},
 		opts = {},
-	},
+	}, ]]
 
 	-- NOTE: Forces you to use nvim more efficiently if possible (disables arrow keys, suggests shorter versions for some motions)
-	{
+	--[[ {
 		"m4xshen/hardtime.nvim",
 		dependencies = { "MunifTanjim/nui.nvim" },
 		opts = {
@@ -242,7 +243,7 @@ return {
 				["l"] = {},
 			},
 		},
-	},
+	}, ]]
 
 	-- NOTE: Really useful plugin. Wanna enclose a word or selection with parentheses, brackets, or anything else that requres closing ? Then you
 	-- need this plugin.
@@ -296,12 +297,12 @@ return {
 			show_icons = true,
 			leader_key = "<leader>aa", -- Recommended to be a single key
 			buffer_leader_key = "<leader>ab", -- Per Buffer Mappings
-			global_bookmarks = true, -- Allow the bookmarks to not be project-dependent
+			global_bookmarks = false, -- Allow the bookmarks to not be project-dependent
 		},
 	},
 
 	-- NOTE: great clipboard manager for neovim
-	--[[ {
+	{
 		"AckslD/nvim-neoclip.lua",
 		dependencies = {
 			{ "ibhagwan/fzf-lua" },
@@ -309,7 +310,7 @@ return {
 		config = function()
 			require("neoclip").setup()
 		end,
-	}, ]]
+	},
 
 	-- NOTE: gitsigns integration
 	{
@@ -323,7 +324,6 @@ return {
 	{ "norcalli/nvim-colorizer.lua" },
 
 	-- NOTE: Really cool file browser
-	-- TODO: make better keybinds for navigation, the default ones are kinda hard to reach
 	{
 		"stevearc/oil.nvim",
 		---@module 'oil'
@@ -348,7 +348,7 @@ return {
 	},
 
 	-- NOTE: Minimal keystroke display
-	{
+	--[[ {
 		"nvzone/showkeys",
 		cmd = "ShowkeysToggle",
 		opts = {
@@ -356,7 +356,7 @@ return {
 				border = "rounded",
 			},
 		},
-	},
+	}, ]]
 
 	-- WARN: wanted to use this to develop the UI for my plugins, but there's no documentation yet :/
 	--[[ {
@@ -383,7 +383,7 @@ return {
 	},
 
 	-- NOTE: Great collection of plugins from folke
-	{
+	--[[ {
 		"folke/snacks.nvim",
 		---@type snacks.Config
 		opts = {
@@ -393,7 +393,7 @@ return {
 				-- refer to the configuration section below
 			},
 		},
-	},
+	}, ]]
 
 	-- NOTE: devdocs integration
 	--[[ {
@@ -451,13 +451,12 @@ return {
 	}, ]]
 
 	-- NOTE: because we're doing haskell in class rn
-	-- TODO: uninstall as soon as the class is done
-	{
+	--[[ {
 		"mrcjkb/haskell-tools.nvim",
 		version = "^4", -- Recommended
 		lazy = false, -- This plugin is already lazy
 		ft = "haskell",
-	},
+	}, ]]
 
 	-- NOTE: session manager for neovim, because I feel like sessions are my next big upgrade to my workflow
 	{
@@ -505,7 +504,7 @@ return {
 	},
 
 	-- NOTE: better integration with zellij, for when I get to using it eventually
-	{
+	--[[ {
 		"swaits/zellij-nav.nvim",
 		lazy = true,
 		event = "VeryLazy",
@@ -516,8 +515,9 @@ return {
 			{ "<c-l>", "<cmd>ZellijNavigateRightTab<cr>", { silent = true, desc = "navigate right or tab" } },
 		},
 		opts = {},
-	},
-	{
+	}, ]]
+
+	--[[ {
 		"michaelrommel/nvim-silicon",
 		lazy = true,
 		cmd = "Silicon",
@@ -623,7 +623,8 @@ return {
 			-- 	return "./" .. os.date("!%Y-%m-%dT%H-%M-%SZ") .. "_code.png"
 			-- end,
 		},
-	},
+	}, ]]
+
 	{
 		"hat0uma/csvview.nvim",
 		---@module "csvview"

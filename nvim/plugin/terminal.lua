@@ -15,7 +15,7 @@ function TerminalToggle.toggle(command)
 		vim.api.nvim_win_set_buf(0, terminal_buf)
 		vim.api.nvim_win_set_height(0, 10)
 
-		local cmd_to_run = { "nu" }
+		local cmd_to_run = { "zsh" }
 		if command then
 			table.insert(cmd_to_run, command)
 		end

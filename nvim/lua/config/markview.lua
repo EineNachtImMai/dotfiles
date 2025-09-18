@@ -8,6 +8,9 @@ require("markview").setup({
 	latex = {
 		enable = false,
 	},
+	typst = {
+		enable = false,
+	},
 })
 
 vim.api.nvim_set_hl(0, "MarkviewPalette1", { fg = "#89dceb", bg = "#4A707B", bold = true })

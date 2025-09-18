@@ -7,30 +7,34 @@ require("which-key").add({
 	{ "<leader>fm", "<cmd>FzfLua man_pages<cr>", desc = "Browse Man Pages" },
 	{ "<leader>fk", "<cmd>FzfLua keymaps<cr>", desc = "Browse Keymaps" },
 	{ "<leader>fc", "<cmd>FzfLua commands<cr>", desc = "Browse Commands" },
-	-- { "<leader>fp", "<cmd>FzfLua neoclip<cr>", desc = "Browse Registers for pasting" },
+	{
+		"<leader>fp",
+		function()
+			require("neoclip.fzf")("+")
+		end,
+		desc = "Browse Registers for pasting",
+	},
 
 	{ "<leader>s", group = "Sessions" },
 
-	{ "<leader>;", "<cmd>Alpha<cr>", desc = "Dashboard" },
-
 	{ "<leader>l", group = "LSP" },
-	{ "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
-	{ "<leader>li", "<cmd>LspInfo<cr>", desc = "LSP Info" },
-	{ "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action" },
-	{ "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename Symbol" },
+	{ "<leader>la", vim.lsp.buf.code_action, desc = "Code Action" },
+	{ "<leader>ll", vim.lsp.codelens.run, desc = "CodeLens Action" },
+	{ "<leader>lr", vim.lsp.buf.rename, desc = "Rename Symbol" },
 	{ "<leader>la", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Document Symbols" },
 	{ "<leader>lA", "<cmd>FzfLua lsp_live_workspace_symbols<cr>", desc = "Workspace Symbols" },
 	{ "<leader>lf", "<cmd>Format<cr>", desc = "Format using conform.nvim" },
 
-	{ "<leader>w", proxy = "<c-w>", group = "Windows" }, -- proxy to window mappings
-
-	{ "<leader><Tab>", "<cmd>lua require('undotree').toggle()<cr>", desc = "Toggle UndoTree" },
+	{
+		"<leader><Tab>",
+		function()
+			require("undotree").toggle()
+		end,
+		desc = "Toggle UndoTree",
+	},
 
 	{ "<leader>b", group = "Buffers" },
 	{ "<leader>bk", "<cmd>bdelete<cr>", desc = "Kill Current Buffer" },
-
-	{ "<leader>o", group = "Obsidian" },
-	{ "<leader>op", "<cmd>ObsidianPasteImg<cr>", desc = "Paste Image from clipboard" },
 
 	{ "<leader>e", "<cmd>Oil<cr>", desc = "Oil File Explorer" },
 
@@ -55,7 +59,7 @@ require("which-key").add({
 		-- NOTE: Won't work if the language doesn't support blockwise comments (e.g. Python). I'll figure it out eventually.
 	},
 
-	{
+	--[[ {
 		"<leader><Left>",
 		function()
 			vim.cmd("bprev")
@@ -68,24 +72,21 @@ require("which-key").add({
 			vim.cmd("bnext")
 		end,
 		desc = "Next Buffer",
-	},
+	}, ]]
 
-	{ "<leader>|", "<cmd>vsplit<cr>", desc = "Vertical Split" },
-	{ "<leader>-", "<cmd>split<cr>", desc = "Horizontal Split" },
+	--[[ { "<leader>|", "<cmd>vsplit<cr>", desc = "Vertical Split" },
+	{ "<leader>-", "<cmd>split<cr>", desc = "Horizontal Split" }, ]]
 
 	{ "<leader>p", "<cmd>Lazy<cr>", desc = "Plugins" },
 
-	{ "<leader>w", "<cmd>SudaWrite<cr>", desc = "Sudo Write because you're a dumbass who forgot to sudo nvim" },
+	-- { "<leader>w", "<cmd>SudaWrite<cr>", desc = "Sudo Write because you're a dumbass who forgot to sudo nvim" },
 
-	{ "<leader>H", "<cmd>Hardtime toggle<cr>", desc = "Toggle hardtime.nvim" },
+	-- { "<leader>H", "<cmd>Hardtime toggle<cr>", desc = "Toggle hardtime.nvim" },
 
-	{ "<leader>g", group = "Git" },
-	{ "<leader>gl", "<cmd>LazyGit<cr>", desc = "Open LazyGit (great git TUI)" },
-	{ "<leader>gs", "<cmd>Gitsigns toggle_signs<cr>", desc = "Toggle git signs" },
+	--[[ { "<leader>g", group = "Git" },
+	{ "<leader>gl", "<cmd>LazyGit<cr>", desc = "Open LazyGit (great git TUI)" }, ]]
 
-	{ "<leader>c", "<cmd>:e ~/.config/nvim/init.lua<cr>", desc = "Edit neovim configuration (use with caution)" },
-
-	{ "<leader>T", group = "Typr" },
-	{ "<leader>Tt", "<cmd>Typr<cr>", desc = "Open Typr" },
-	{ "<leader>Td", "<cmd>TyprStats<cr>", desc = "Open Typr stats tab" },
+	{ "<leader>t", group = "Typr" },
+	{ "<leader>tt", "<cmd>Typr<cr>", desc = "Open Typr" },
+	{ "<leader>td", "<cmd>TyprStats<cr>", desc = "Open Typr stats tab" },
 })

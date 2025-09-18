@@ -21,8 +21,9 @@ require("config.markview")
 require("config.luasnip")
 require("config.possession")
 require("config.ufo")
-require("config.obsidian")
+-- require("config.obsidian")
 require("config.languages")
+require("config.noice")
 
 -- NOTE: NEEDS to be after the other "require"
 require("which-key-keybinds")
@@ -52,13 +53,5 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	callback = function()
 		vim.opt.number = false
 		vim.opt.relativenumber = false
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "markdown",
-	callback = function()
-		-- Override any unwanted settings
-		vim.opt.conceallevel = 2
 	end,
 })
