@@ -64,18 +64,6 @@ for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/custom/snippets/*.lu
 	loadfile(ft_path)()
 end
 
-vim.keymap.set({ "i", "s" }, "C-k", function()
-	if luasnip.expand_or_jumpable() then
-		luasnip.expand_or_jump()
-	end
-end, { silent = true, desc = "expand_or_jump" })
-
-vim.keymap.set({ "i", "s" }, "C-j", function()
-	if luasnip.jumpable(-1) then
-		luasnip.jump(-1)
-	end
-end, { silent = true })
-
 -- Disable cmp-buffer for Markdown and txt files
 cmp.setup.filetype({ "markdown", "txt" }, {
 	sources = cmp.config.sources({
