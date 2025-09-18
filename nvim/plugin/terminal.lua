@@ -49,20 +49,6 @@ vim.keymap.set({ "t", "n", "i" }, "<C-q>", function()
 	TerminalToggle.toggle()
 end, { noremap = true, silent = true })
 
---TODO: finish this
---[[ vim.keymap.set(
-  {"t", "n", "i"},
-  '<C-a-q>',
-  function ()
-    filetype = vim.bo.filetype
-    command = require("run").filetype
-    if command then
-        TerminalToggle.toggle(command)
-    end
-    TerminalToggle.toggle()
-  end,
-  { noremap = true, silent = true }) ]]
-
 vim.keymap.set({ "t" }, "<ESC><ESC>", "<c-\\><c-n><c-w>W", { noremap = true, silent = true })
 
 return TerminalToggle

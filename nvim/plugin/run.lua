@@ -1,6 +1,0 @@
-vim.api.nvim_create_user_command("Filename", function()
-	print(string.format("on est dans le fichier %s", vim.fn.expand("%:p")))
-	print(string.format("on est dans le fichier %s", vim.fn.expand("%:t")))
-	print(string.format("on est dans le fichier %s", vim.fn.expand("%:.")))
-	print(string.format("on est dans le fichier %s", vim.fn.expand("%")))
-end, {})
