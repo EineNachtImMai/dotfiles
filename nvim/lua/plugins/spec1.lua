@@ -140,8 +140,7 @@ return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-		opts = {
-		},
+		opts = {},
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			"rcarriga/nvim-notify",
@@ -383,17 +382,17 @@ return {
 	},
 
 	-- NOTE: Great collection of plugins from folke
-	--[[ {
+	{
 		"folke/snacks.nvim",
 		---@type snacks.Config
 		opts = {
 			image = {
-				-- your image configuration comes here
-				-- or leave it empty to use the default settings
-				-- refer to the configuration section below
+				math = {
+					enabled = false,
+				},
 			},
 		},
-	}, ]]
+	},
 
 	-- NOTE: devdocs integration
 	--[[ {
