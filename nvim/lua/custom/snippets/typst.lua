@@ -445,13 +445,15 @@ supplement: <>,
 	--   { condition = in_mathzone * trigger_does_not_follow_alpha_char }
 	-- ),
 	s(
-		{ trig = "intg([%w])", wordTrig = false, snippetType = "autosnippet" },
-		fmta("integral_(<>)^(<>)<>", {
+		{ trig = "intg(%w)", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		fmta([[integral_(<>)^(<>) <> "d"<> <>]], {
 			d(1, get_visual),
 			i(2),
+			i(3),
 			f(function(_, snip)
 				return snip.captures[1]
 			end),
+			i(4),
 		}),
 		{ condition = in_mathzone * trigger_does_not_follow_alpha_char }
 	),
