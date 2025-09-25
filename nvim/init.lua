@@ -16,7 +16,6 @@ require("config.markview")
 require("config.luasnip")
 require("config.possession")
 require("config.ufo")
-require("config.languages")
 require("config.noice")
 
 -- NOTE: NEEDS to be after the other "require"

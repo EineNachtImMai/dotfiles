@@ -21,7 +21,7 @@
   "lazygit.nvim": { "branch": "main", "commit": "2305deed25bc61b866d5d39189e9105a45cf1cfb" },
   "lualine.nvim": { "branch": "master", "commit": "b8c23159c0161f4b89196f74ee3a6d02cdc3a955" },
   "lunar.nvim": { "branch": "master", "commit": "08bbc93b96ad698d22fc2aa01805786bcedc34b9" },
-  "markview.nvim": { "branch": "main", "commit": "b1d648d2f3cd55de45e216fe480594525e503656" },
+  "markview.nvim": { "branch": "main", "commit": "82c21e3b3f982ae76107a787fb28383d76fffeab" },
   "mini.icons": { "branch": "main", "commit": "f9a177c11daa7829389b7b6eaaec8b8a5c47052d" },
   "mini.nvim": { "branch": "main", "commit": "94cae4660a8b2d95dbbd56e1fbc6fcfa2716d152" },
   "noice.nvim": { "branch": "main", "commit": "0427460c2d7f673ad60eb02b35f5e9926cf67c59" },
@@ -46,5 +46,5 @@
   "undotree": { "branch": "main", "commit": "ddc11977141c5b96b10568a32291115730ad626d" },
   "vim-suda": { "branch": "master", "commit": "9adda7d195222d4e2854efb2a88005a120296c47" },
   "volt": { "branch": "main", "commit": "620de1321f275ec9d80028c68d1b88b409c0c8b1" },
-  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
+  "which-key.nvim": { "branch": "main", "commit": "904308e6885bbb7b60714c80ab3daf0c071c1492" }
 }

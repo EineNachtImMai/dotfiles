@@ -3,6 +3,8 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+# bindkey -v
+
 zinit light zsh-users/zsh-completions
 zinit light olets/zsh-abbr
 zmodload zsh/mapfile
@@ -22,6 +24,8 @@ alias l="eza --grid --oneline --icons=auto -la"
 alias tree="eza --tree --icons=auto"
 
 export MANPAGER="nvim +Man!"
+export VISUAL="nvim"
+export EDITOR="nvim"
 
 fastfetch
 
