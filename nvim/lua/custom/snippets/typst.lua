@@ -507,35 +507,49 @@ supplement: <>,
 	s({ trig = "@p", snippetType = "autosnippet" }, t("partial"), { condition = in_mathzone }),
 	s({ trig = "@c", snippetType = "autosnippet" }, t("compose"), { condition = in_mathzone }),
 	s(
-		{ trig = "dxdy", snippetType = "autosnippet" },
-		fmta([[frac((d <>,d <>)<>]], {
-			iv(1),
-			i(2),
+		{ trig = "d(%w)d(%w)", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		fmta([[("d" <>)/("d" <>) <>]], {
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
+			f(function(_, snip)
+				return snip.captures[2]
+			end),
 			i(0),
 		}),
 		{ condition = in_mathzone }
 	),
 	s(
-		{ trig = "ddx", snippetType = "autosnippet" },
-		fmta([[\frac{d}{d<>}<>]], {
+		{ trig = "dd(%w)", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		fmta([[("d" <>)/("d" <>)<>]], {
 			d(1, get_visual),
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
 			i(0),
 		}),
 		{ condition = in_mathzone }
 	),
 	s(
-		{ trig = "pxpy", snippetType = "autosnippet" },
-		fmta([[\frac{\partial <>}{\partial <>}<>]], {
+		{ trig = "p(%w)p(%w)", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		fmta([[(partial <>)/(partial <>) <>]], {
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
+			f(function(_, snip)
+				return snip.captures[2]
+			end),
+			i(0),
+		}),
+		{ condition = in_mathzone }
+	),
+	s(
+		{ trig = "dd(%w)", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		fmta([[(partial <>)/(partial <>)<>]], {
 			d(1, get_visual),
-			i(2),
-			i(0),
-		}),
-		{ condition = in_mathzone }
-	),
-	s(
-		{ trig = "ppx", snippetType = "autosnippet" },
-		fmta([[\frac{\partial}{\partial <>}<>]], {
-			iv(1),
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
 			i(0),
 		}),
 		{ condition = in_mathzone }
