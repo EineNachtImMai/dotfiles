@@ -16,7 +16,7 @@ zstyle ":completion:*" fzf-preview "ls --color $realpath"
 
 source ~/.config/zsh/zoxide.zsh
 source ~/.config/zsh/catppuccin.zsh
-# source ~/.config/zsh/custom_functions.zsh
+source ~/.config/zsh/custom_functions.zsh
 
 alias c="clear"
 alias ls="eza --grid --icons=auto"

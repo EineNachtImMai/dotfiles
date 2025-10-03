@@ -42,7 +42,7 @@ window#waybar {
 	border-radius: 16px;
 }
 
-#custom-date, #clock, #battery, #pulseaudio, #network, #custom-randwall, #custom-launcher, #custom-launcher2 {
+#custom-date, #clock, #battery, #pulseaudio, #network, #custom-launcher, #custom-launcher2 {
 	background: transparent;
 	padding: 5px 5px 5px 5px;
 	margin: 5px 5px 5px 5px;
@@ -129,12 +129,6 @@ window#waybar {
     color: #928374;
     border-radius: 8px;
     margin-left: 0px;
-}
-
-#custom-randwall {
-    color: #f4d9e1;
-    border-radius: 8px;
-    margin-right: 0px;
 }
 
 #custom-launcher {
