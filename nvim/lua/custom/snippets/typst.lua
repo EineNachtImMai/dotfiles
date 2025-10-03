@@ -537,7 +537,7 @@ supplement: <>,
 		{ condition = in_mathzone }
 	),
 	s(
-		{ trig = "dd(%w)", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		{ trig = "pp(%w)", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 		fmta([[(partial <>)/(partial <>)<>]], {
 			d(1, get_visual),
 			f(function(_, snip)
