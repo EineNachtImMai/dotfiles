@@ -1,6 +1,9 @@
 local ls = require("luasnip")
 
-ls.config.setup({ enable_autosnippets = true })
+ls.config.setup({
+	enable_autosnippets = true,
+	store_selection_keys = "<Tab>",
+})
 
 ls.add_snippets("rust", require("custom.snippets.rust"))
 ls.add_snippets("python", require("custom.snippets.python"))

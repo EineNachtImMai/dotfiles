@@ -3,32 +3,14 @@ require("luasnip.session.snippet_collection").clear_snippets("typst")
 local ls = require("luasnip")
 local s = ls.snippet
 local sn = ls.snippet_node
--- local isn = ls.indent_snippet_node
 local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
--- local c = ls.choice_node
 local d = ls.dynamic_node
 local r = ls.restore_node
--- local events = require("luasnip.util.events")
--- local ai = require("luasnip.nodes.absolute_indexer")
 local extras = require("luasnip.extras")
 local l = extras.lambda
--- local rep = extras.rep
--- local p = extras.partial
--- local m = extras.match
--- local n = extras.nonempty
--- local dl = extras.dynamic_lambda
--- local fmt = require("luasnip.extras.fmt").fmt
 local fmta = require("luasnip.extras.fmt").fmta
--- local conds = require("luasnip.extras.expand_conditions")
--- local line_begin = require("luasnip.extras.expand_conditions").line_begin
--- local postfix = require("luasnip.extras.postfix").postfix
--- local types = require("luasnip.util.types")
--- local parse = require("luasnip.util.parser").parse_snippet
--- local ms = ls.multi_snippet
--- local k = require("luasnip.nodes.key_indexer").new_key
--- local extdec = ls.extend_decorator
 
 local get_visual = function(args, parent)
 	if #parent.snippet.env.LS_SELECT_RAW > 0 then
@@ -64,7 +46,6 @@ local function make_trigger_does_not_follow_char(pattern)
 	return cond_obj.make_condition(condition)
 end
 
-local ls = require("luasnip")
 local trigger_does_not_follow_alpha_num_char = make_trigger_does_not_follow_char("%w")
 local trigger_does_not_follow_alpha_char = make_trigger_does_not_follow_char("%a")
 
@@ -457,6 +438,18 @@ supplement: <>,
 		}),
 		{ condition = in_mathzone * trigger_does_not_follow_alpha_char }
 	),
+	s(
+		{ trig = "Intg(%w)", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		fmta([[integral_(<>) <> "d"<> <>]], {
+			d(1, get_visual),
+			i(2),
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
+			i(3),
+		}),
+		{ condition = in_mathzone * trigger_does_not_follow_alpha_char }
+	),
 	--- https://github.com/michaelfortunato/luasnip-latex-snippets.nvim/blob/main/lua/luasnip-latex-snippets/math_iA.lua
 	--- Again, all of these are covered correctly by Typst!
 	-- s({ trig = "RR", snippetType = "autosnippet" }, t("\\mathbb{R}"), { condition = in_mathzone }),
@@ -507,35 +500,49 @@ supplement: <>,
 	s({ trig = "@p", snippetType = "autosnippet" }, t("partial"), { condition = in_mathzone }),
 	s({ trig = "@c", snippetType = "autosnippet" }, t("compose"), { condition = in_mathzone }),
 	s(
-		{ trig = "dxdy", snippetType = "autosnippet" },
-		fmta([[frac((d <>,d <>)<>]], {
-			iv(1),
-			i(2),
+		{ trig = "d(%w)d(%w)", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		fmta([[("d" <>)/("d" <>) <>]], {
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
+			f(function(_, snip)
+				return snip.captures[2]
+			end),
 			i(0),
 		}),
 		{ condition = in_mathzone }
 	),
 	s(
-		{ trig = "ddx", snippetType = "autosnippet" },
-		fmta([[\frac{d}{d<>}<>]], {
+		{ trig = "dd(%w)", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		fmta([[("d" <>)/("d" <>)<>]], {
 			d(1, get_visual),
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
 			i(0),
 		}),
 		{ condition = in_mathzone }
 	),
 	s(
-		{ trig = "pxpy", snippetType = "autosnippet" },
-		fmta([[\frac{\partial <>}{\partial <>}<>]], {
+		{ trig = "p(%w)p(%w)", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		fmta([[(partial <>)/(partial <>) <>]], {
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
+			f(function(_, snip)
+				return snip.captures[2]
+			end),
+			i(0),
+		}),
+		{ condition = in_mathzone }
+	),
+	s(
+		{ trig = "pp(%w)", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+		fmta([[(partial <>)/(partial <>)<>]], {
 			d(1, get_visual),
-			i(2),
-			i(0),
-		}),
-		{ condition = in_mathzone }
-	),
-	s(
-		{ trig = "ppx", snippetType = "autosnippet" },
-		fmta([[\frac{\partial}{\partial <>}<>]], {
-			iv(1),
+			f(function(_, snip)
+				return snip.captures[1]
+			end),
 			i(0),
 		}),
 		{ condition = in_mathzone }
@@ -588,7 +595,7 @@ supplement: <>,
 	--- Accents - hat
 	s(
 		{ trig = "hat", wordTrig = false, snippetType = "autosnippet" },
-		fmta([[\hat<>]], {
+		fmta([[hat<>]], {
 			i(0),
 		}),
 		{ condition = in_mathzone * trigger_does_not_follow_alpha_char }
@@ -675,24 +682,24 @@ $<>]],
 	-- }),
 	-- { condition = in_mathzone * trigger_does_not_follow_alpha_char }
 	-- ),
-	s(
-		{ trig = "mB", wordTrig = false, snippetType = "autosnippet" },
-		fmta([[bb(<>)<>]], {
-			d(1, get_visual),
-			i(0),
-		}),
-		{ condition = in_mathzone * trigger_does_not_follow_alpha_char }
-	),
-	s(
-		{ trig = "(%a)mB", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
-		fmta([[bb(<>)<>]], {
-			f(function(_, snip)
-				return snip.captures[1]
-			end),
-			i(0),
-		}),
-		{ condition = in_mathzone }
-	),
+	-- s(
+	-- 	{ trig = "mB", wordTrig = false, snippetType = "autosnippet" },
+	-- 	fmta([[bb(<>)<>]], {
+	-- 		d(1, get_visual),
+	-- 		i(0),
+	-- 	}),
+	-- 	{ condition = in_mathzone * trigger_does_not_follow_alpha_char }
+	-- ),
+	-- s(
+	-- 	{ trig = "(%a)mB", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
+	-- 	fmta([[bb(<>)<>]], {
+	-- 		f(function(_, snip)
+	-- 			return snip.captures[1]
+	-- 		end),
+	-- 		i(0),
+	-- 	}),
+	-- 	{ condition = in_mathzone }
+	-- ),
 	s(
 		{ trig = "mf", wordTrig = false, snippetType = "autosnippet" },
 		fmta([[frak(<>)<>]], {
@@ -732,21 +739,29 @@ $<>]],
 		{ condition = in_mathzone * trigger_does_not_follow_alpha_char }
 	),
 	s(
-		{ trig = "mc", wordTrig = false, snippetType = "autosnippet" },
-		fmta([[cal(<>)<>]], {
+		{ trig = "Sum", wordTrig = false, snippetType = "autosnippet" },
+		fmta("sum_(<>)<>", {
 			d(1, get_visual),
 			i(0),
 		}),
-		{ condition = in_mathzone }
+		{ condition = in_mathzone * trigger_does_not_follow_alpha_char }
 	),
-	s(
-		{ trig = "mcal", wordTrig = false, snippetType = "autosnippet" },
-		fmta([[cal(<>)<>]], {
-			d(1, get_visual),
-			i(0),
-		}),
-		{ condition = in_mathzone }
-	),
+	-- s(
+	-- 	{ trig = "mc", wordTrig = false, snippetType = "autosnippet" },
+	-- 	fmta([[cal(<>)<>]], {
+	-- 		d(1, get_visual),
+	-- 		i(0),
+	-- 	}),
+	-- 	{ condition = in_mathzone }
+	-- ),
+	-- s(
+	-- 	{ trig = "mcal", wordTrig = false, snippetType = "autosnippet" },
+	-- 	fmta([[cal(<>)<>]], {
+	-- 		d(1, get_visual),
+	-- 		i(0),
+	-- 	}),
+	-- 	{ condition = in_mathzone }
+	-- ),
 	s(
 		{ trig = "cal", wordTrig = false, snippetType = "autosnippet" },
 		fmta([[cal(<>)<>]], {
@@ -1005,7 +1020,7 @@ $<>]],
 	-- Matrices and Cases
 	s(
 		{
-			trig = "([bBpvV]?)mat(%d+)x(%d+)",
+			trig = "([bBpvV]?)mat(%d+)x(%d+) ",
 			name = "[bBpvV]matrix",
 			desc = "matrices",
 			regTrig = true,

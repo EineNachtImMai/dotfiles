@@ -8,7 +8,7 @@
     "margin-right": 0,
     "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/playerctl", "custom/playerlabel"],
     "modules-center": ["cpu", "memory", "disk", "custom/powerbutton"],
-    "modules-right": [/*"tray",*/ "custom/randwall", "network", "backlight", "pulseaudio", "battery", "clock", "custom/launcher2"],
+    "modules-right": [/*"tray",*/"network", "backlight", "pulseaudio", "battery", "clock", "custom/launcher2"],
     // Modules configuration
 	"clock": {
 		"format": "   {:%H:%M}",
@@ -154,13 +154,6 @@
     }
   },
 
-
-  "custom/randwall": {
-    "format": "󰏘",
-    "on-click": "~/.config/hypr/scripts/rand_wallpaper.py",
-    "on-click-right": "hyprctl hyprpaper wallpaper ~/.wallpapers/cat.jpg",
-    "on-click-middle": "hyprctl hyprpaper wallpaper ~/.wallpapers/mazda.png"
-  },
   "custom/launcher": {
     "format": "",
     "on-click": "rofi -show drun",

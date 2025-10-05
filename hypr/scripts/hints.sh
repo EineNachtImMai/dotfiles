@@ -11,13 +11,3 @@ mapfile -t BINDINGS < <(grep -e '^bind =' -e '^bindm =' "$HYPR_CONF" | \
 echo $BINDINGS
 
 CHOICE=$(printf '%s\n' "${BINDINGS[@]}" | wofi -dmenu -i -p "Hyprland Keybinds:")
-
-# extract cmd from span <span color='gray'>cmd</span>
-# CMD=$(echo "$CHOICE" | sed -n 's/.*<span color='\''gray'\''>\(.*\)<\/span>.*/\1/p')
-
-# execute it if first word is exec else use hyprctl dispatch
-# if [[ $CMD == exec* ]]; then
-    # eval "$CMD3
-# else
-    # hyprctl dispatch "$CMD"
-# fi
