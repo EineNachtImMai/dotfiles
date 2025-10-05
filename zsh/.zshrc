@@ -22,6 +22,7 @@ alias l="eza --grid --oneline --icons=auto -la"
 alias tree="eza --tree --icons=auto"
 
 export MANPAGER="nvim +Man!"
+export NIXPKGS_ALLOW_UNFREE=1
 
 fastfetch
 
