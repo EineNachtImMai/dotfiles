@@ -1039,7 +1039,7 @@ mat(delim:<>,
 					elseif (prefix == "p") or prefix == "v" or prefix == "V" then
 						return '"("'
 					else
-						return '"["'
+						return '"("'
 					end
 				end),
 				d(1, generate_matrix),
