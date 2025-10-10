@@ -15,6 +15,7 @@ zstyle ":completion:*" menu no
 zstyle ":completion:*" fzf-preview "ls --color $realpath"
 
 source ~/.config/zsh/zoxide.zsh
+source ~/.config/zsh/options.zsh
 source ~/.config/zsh/catppuccin.zsh
 source ~/.config/zsh/custom_functions.zsh
 

@@ -1,0 +1,1 @@
+setopt ksh_arrays
