@@ -5,7 +5,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 # bindkey -v
 
-zinit light zsh-users/zsh-completions
+# zinit light zsh-users/zsh-completions
 zinit light olets/zsh-abbr
 zmodload zsh/mapfile
 
