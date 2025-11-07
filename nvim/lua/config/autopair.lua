@@ -4,6 +4,8 @@ if not status_ok then
 	return
 end
 
+local handlers = require("nvim-autopairs.completion.handlers")
+
 npairs.setup({
 	check_ts = true,
 	ts_config = {
@@ -25,9 +27,27 @@ npairs.setup({
 	},
 })
 
+local Rule = require('nvim-autopairs.rule')
+local cond = require('nvim-autopairs.conds')
+print(vim.inspect(cond))
+
+npairs.add_rules({
+  Rule("$", "$",{"typ", "typst"})
+    -- don't add a pair if the next character is %
+    :with_pair(cond.none())
+  }
+)
+
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
 	return
 end
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+cmp.event:on(
+	"confirm_done",
+	cmp_autopairs.on_confirm_done({
+		map_char = {
+			tex = "",
+		},
+	})
+)
