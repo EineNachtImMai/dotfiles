@@ -664,6 +664,22 @@ $<>]],
 		}),
 		{ condition = trigger_does_not_follow_alpha_char }
 	),
+	s(
+		{ trig = "**", wordtrig = false, snippetType = "autosnippet" },
+		fmta([[*<>*<>]], {
+			d(1, get_visual),
+			i(0),
+		}),
+		{ condition = trigger_does_not_follow_alpha_char }
+	),
+	s(
+		{ trig = "__", wordtrig = false, snippetType = "autosnippet" },
+		fmta([[_<>_<>]], {
+			d(1, get_visual),
+			i(0),
+		}),
+		{ condition = trigger_does_not_follow_alpha_char }
+	),
 	-- s(
 	-- { trig = "(%a)mb", regTrig = true, wordTrig = false, snippetType = "autosnippet" },
 	-- fmta([[upright(bold(<>))<>]], {
