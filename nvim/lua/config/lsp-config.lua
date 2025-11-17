@@ -57,14 +57,8 @@ vim.lsp.config.markdown_oxide = {
 
 vim.lsp.config.clangd = {
 	cmd = { "clangd" },
-	filetypes = { "c" },
+	filetypes = { "c", "cpp" },
 }
-
---[[ vim.lsp.config.bashls = {
-	cmd = { "bash-language-server", "start" },
-	filetypes = { "bash", "sh" },
-}
-vim.lsp.enable("bashls") ]]
 
 -- lsp.haskell_ls.setup {}
 

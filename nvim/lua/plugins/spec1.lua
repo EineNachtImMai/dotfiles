@@ -646,4 +646,14 @@ return {
 		},
 		cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
 	},
+
+	{
+		"gisketch/triforce.nvim",
+		dependencies = {
+			"nvzone/volt",
+		},
+		config = function()
+			require("triforce").setup({})
+		end,
+	},
 }
