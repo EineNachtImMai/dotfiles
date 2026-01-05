@@ -656,4 +656,12 @@ return {
 			require("triforce").setup({})
 		end,
 	}, ]]
+
+	{
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			"mrcjkb/rustaceanvim",
+			"igorlfs/nvim-dap-view",
+		},
+	},
 }

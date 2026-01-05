@@ -89,4 +89,10 @@ require("which-key").add({
 	{ "<leader>t", group = "Typr" },
 	{ "<leader>tt", "<cmd>Typr<cr>", desc = "Open Typr" },
 	{ "<leader>td", "<cmd>TyprStats<cr>", desc = "Open Typr stats tab" },
+
+    {"<leader>d", group="Debug"},
+	{ "<leader>dt", "<cmd>DapViewToggle<cr>", desc = "Toggle dap-view" },
+	{ "<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint" },
+	{ "<leader>dc", "<cmd>DapContinue<cr>", desc = "Continue" },
+	{ "<leader>dw", "<cmd>DapViewWatch<cr>", desc = "Watch" },
 })
