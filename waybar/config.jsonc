@@ -50,6 +50,7 @@
             "class<discord>": " ",
           "class<zen-twilight> title<.*github.*>": " ",
           "kitty": " ",
+          "wezterm": " ",
           "title<*.*> nvim>": " ",
           "title<*.*> yazi>": " ",
           "class<thunar>": " ",
@@ -102,14 +103,14 @@
     "format": "󰍛  {}%",
     "format-alt": "󰍛  {used}/{total} GiB",
     "interval": 5,
-    "on-click-right": "kitty htop"
+    "on-click-right": "wezterm htop"
   },
 
   "cpu": {
     "format": "󰻠  {usage}%",
     "format-alt": "󰻠  {avg_frequency} GHz",
     "interval": 5,
-    "on-click-right": "kitty htop"
+    "on-click-right": "wezterm htop"
   },
 
   "disk": {
@@ -117,7 +118,7 @@
     "format-alt": "󰋊  {used}/{total} GiB",
     "interval": 5,
     "path": "/",
-    "on-click-right": "kitty htop"
+    "on-click-right": "wezterm htop"
   },
 	
 	"network": {
@@ -174,7 +175,7 @@
   },
   "custom/launcher2": {
     "format": "󰈸",
-    "on-click": "kitty",
+    "on-click": "wezterm",
 //    "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
     "on-click-right": "spotify-launcher",
 //    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"  
