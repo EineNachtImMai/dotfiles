@@ -8,7 +8,7 @@
     "margin-right": 0,
     "modules-left": ["custom/launcher", "ext/workspaces", "dwl/window", "custom/playerctl", "custom/playerlabel"],
     "modules-center": ["cpu", "memory", "disk", "custom/powerbutton"],
-    "modules-right": [/*"tray",*/"network", "backlight", "pulseaudio", "battery", "clock", "custom/launcher2"],
+    "modules-right": [/*"tray",*/"network", "backlight", "pulseaudio", "battery", "clock"],
     // Modules configuration
 	"clock": {
 		"format": "   {:%H:%M}",
@@ -103,14 +103,14 @@
     "format": "󰍛  {}%",
     "format-alt": "󰍛  {used}/{total} GiB",
     "interval": 5,
-    "on-click-right": "wezterm htop"
+    // "on-click-right": "wezterm htop"
   },
 
   "cpu": {
     "format": "󰻠  {usage}%",
     "format-alt": "󰻠  {avg_frequency} GHz",
     "interval": 5,
-    "on-click-right": "wezterm htop"
+    // "on-click-right": "wezterm htop"
   },
 
   "disk": {
@@ -118,7 +118,7 @@
     "format-alt": "󰋊  {used}/{total} GiB",
     "interval": 5,
     "path": "/",
-    "on-click-right": "wezterm htop"
+    // "on-click-right": "wezterm htop"
   },
 	
 	"network": {
@@ -168,18 +168,6 @@
 
   "custom/launcher": {
     "format": "",
-    "on-click": "rofi -show drun",
-//    "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
-    "on-click-right": "rofi -show run"
-//    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"  
-  },
-  "custom/launcher2": {
-    "format": "󰈸",
-    "on-click": "wezterm",
-//    "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
-    "on-click-right": "spotify-launcher",
-//    "on-click-right": "wofi --show run -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css"  
-    "on-click-middle": "killall waybar; waybar & disown"
   },
 
   "custom/wf-recorder": {
