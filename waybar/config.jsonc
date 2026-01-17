@@ -6,7 +6,7 @@
     "margin-bottom": 0,
     "margin-left": 0,
     "margin-right": 0,
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/playerctl", "custom/playerlabel"],
+    "modules-left": ["custom/launcher", "ext/workspaces", "dwl/window", "custom/playerctl", "custom/playerlabel"],
     "modules-center": ["cpu", "memory", "disk", "custom/powerbutton"],
     "modules-right": [/*"tray",*/"network", "backlight", "pulseaudio", "battery", "clock", "custom/launcher2"],
     // Modules configuration
@@ -22,6 +22,17 @@
     "format": "",
     "on-click": "sh -c '(wlogout --protocol layer-shell & disown)'",
     "on-click-right": "sh -c swaylock & disown"
+  },
+
+"ext/workspaces": {
+    "format": "{icon}",
+    "ignore-hidden": true,
+    "on-click": "activate",
+    "on-click-right": "deactivate",
+    "sort-by-id": true
+  },
+  "dwl/window": {
+    "format": "[{layout}] {title}"
   },
 	
 
