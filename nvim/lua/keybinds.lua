@@ -78,3 +78,5 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+
+vim.keymap.set("ca", "3", "w")
