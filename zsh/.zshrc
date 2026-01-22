@@ -24,6 +24,7 @@ alias c="clear"
 alias ls="eza --grid --icons=auto"
 alias l="eza --grid --oneline --icons=auto -la"
 alias tree="eza --tree --icons=auto"
+alias woman=man
 
 export MANPAGER="nvim +Man!"
 export NIXPKGS_ALLOW_UNFREE=1

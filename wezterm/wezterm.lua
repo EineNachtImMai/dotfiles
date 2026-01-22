@@ -7,7 +7,7 @@ local cfg = {
 	use_fancy_tab_bar = false,
 	tab_bar_at_bottom = true,
 	show_new_tab_button_in_tab_bar = false,
-	font = wezterm.font({ family = "DejaVu Sans Mono" }),
+	font = wezterm.font({ family = "JetBrainsMono NL Nerd Font" }),
 	font_size = 14,
 	window_background_opacity = 0.2,
 
