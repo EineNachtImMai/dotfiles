@@ -60,6 +60,11 @@ vim.lsp.config.clangd = {
 	filetypes = { "c", "cpp" },
 }
 
+vim.lsp.config.typescript_ls = {
+	cmd = { "typescript-language-server", "--stdio" },
+	filetypes = { "javascript", "typescript" },
+}
+
 -- lsp.haskell_ls.setup {}
 
 vim.lsp.enable({
@@ -71,4 +76,5 @@ vim.lsp.enable({
 	"lua_ls",
 	"nixd",
 	"markdown_oxide",
+	"typescript_ls",
 })
