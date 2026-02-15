@@ -72,7 +72,7 @@ vim.lsp.enable({
 	"clangd",
 	"pyright",
 	"gopls",
-	"rust_analyzer",
+	-- "rust_analyzer", NOTE: this one is taken care of by the rust plugin
 	"lua_ls",
 	"nixd",
 	"markdown_oxide",

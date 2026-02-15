@@ -23,6 +23,11 @@ local cfg = {
 			mods = "CTRL|SHIFT",
 			action = wezterm.action.ActivateTabRelative(1),
 		},
+        {
+            key = "x",
+            mods = "ALT",
+            action = wezterm.action.ShowLauncher,
+        },
 	},
 }
 

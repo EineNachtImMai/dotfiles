@@ -8,6 +8,9 @@ source "${ZINIT_HOME}/zinit.zsh"
 # zinit light zsh-users/zsh-completions
 zinit light olets/zsh-abbr
 zmodload zsh/mapfile
+autoload -z edit-command-line
+
+zle -N edit-command-line
 
 zstyle ":completion:*" matcher-list "m:{a-z}={A-Za-z}"
 zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"
@@ -25,6 +28,8 @@ alias ls="eza --grid --icons=auto"
 alias l="eza --grid --oneline --icons=auto -la"
 alias tree="eza --tree --icons=auto"
 alias woman=man
+
+bindkey "^X^E" edit-command-line
 
 export MANPAGER="nvim +Man!"
 export NIXPKGS_ALLOW_UNFREE=1
