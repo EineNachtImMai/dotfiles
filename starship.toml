@@ -10,7 +10,7 @@ $git_status\
 $nodejs\
 $rust\
 $golang\
-$php\
+$nix_shell\
 [](fg:#1d2230)\
 $fill\
 [](fg:#1d2230)\
@@ -29,11 +29,11 @@ format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"~" = "󰋜 ~"
-"/etc/nixos" = " "
+# [directory.substitutions]
+# "Documents" = "󰈙 "
+# "Downloads" = " "
+# "~" = "󰋜 ~"
+# "/etc/nixos" = " "
 
 [git_branch]
 symbol = ""
@@ -50,19 +50,29 @@ stashed = "$count* "
 
 [rust]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#D34516 bg:#212736)]($style)'
+style = "fg:#d34516 bg:#1d2230"
+format = '[ $symbol ($version) ]($style)'
 
 [golang]
 symbol = ""
-style = "bg:#212736"
-format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+style = "fg:#769ff0 bg:#1d2230"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = "󰎙"
+style = "fg:#3c873a bg:#1d2230"
+format = '[ $symbol ($version) ]($style)'
+
+[nix_shell]
+symbol = ""
+style = "bg:#1d2230"
+format = '[via $symbol $state( \($name\))]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[   $time  ](fg:#a0a9cb bg:#1d2230)]($style)'
+style = "fg:#a0a9cb bg:#1d2230"
+format = '[   $time  ]($style)'
 
 [character]
 success_symbol = '[✔](fg:#4bb543 bg:#1d2230)'
