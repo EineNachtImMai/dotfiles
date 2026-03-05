@@ -1,25 +1,11 @@
+require("setup")
 require("options")
 require("keybinds")
-require("config.whichkey")
-require("config.lazy")
-require("config.bufferline")
-require("config.lualine")
-require("config.treesitter")
-require("config.lsp-config")
-require("config.autopair")
-require("config.undotree")
-require("config.cmp")
-require("config.format")
-require("config.tiny-inline-diagnostic")
-require("config.mini")
-require("config.markview")
-require("config.luasnip")
-require("config.possession")
-require("config.ufo")
-require("config.noice")
 
--- NOTE: NEEDS to be after the other "require"
-require("which-key-keybinds")
+require("colorscheme")
+require("plugins")
+require("custom-plugins")
+require("lsp")
 
 -- set handler for displaying diagnostics
 vim.diagnostic.config({ virtual_text = false })
@@ -35,12 +21,6 @@ vim.diagnostic.config({
 		},
 	},
 })
-
--- setup comment.nvim
-require("Comment").setup()
-
--- optionally enable 24-bit colour
-vim.opt.termguicolors = true
 
 vim.api.nvim_create_autocmd("TermOpen", {
 	callback = function()

@@ -21,7 +21,7 @@ function TerminalToggle.toggle(command)
 		end
 
 		-- Start the terminal
-		vim.fn.termopen(cmd_to_run)
+		vim.fn.termopen(cmd_to_run) -- TODO: this is deprecated, switch to vim.apt.nvim_open_term
 
 		-- Automatically enter terminal mode
 		vim.cmd("startinsert")
